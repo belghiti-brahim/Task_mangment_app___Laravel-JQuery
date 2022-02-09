@@ -16,7 +16,9 @@ class CreateResponsibilitiesTable extends Migration
         Schema::create('responsibilities', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("definition");
+            $table->string("description");
+            $table->string("color");
+            $table->foreignId("user_id")->constrained("users")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

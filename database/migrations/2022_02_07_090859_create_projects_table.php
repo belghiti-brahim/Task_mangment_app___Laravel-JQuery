@@ -15,9 +15,12 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('project_id')->nullable();
             $table->string("name");
             $table->string("definition");
             $table->foreignId("responsibility_id")->constrained("responsibilities")->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
         });
     }

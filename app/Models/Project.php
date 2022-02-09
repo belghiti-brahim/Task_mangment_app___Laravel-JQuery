@@ -19,4 +19,13 @@ class Project extends Model
     {
      return $this->belongsTo(Responsibility::class, "responsibility_id", 'id');
     }
+    public function parent()
+{
+    return $this->belongsTo(Project::class,'parent_id')->where('parent_id',0)->with('parent');
+}
+
+public function children()
+{
+    return $this->hasMany(Project::class,'parent_id')->with('children');
+}
 }

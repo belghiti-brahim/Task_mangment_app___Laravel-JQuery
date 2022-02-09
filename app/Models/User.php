@@ -59,7 +59,7 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function actions(){
-        return $this->hasMany(Action::class, "user_id", 'id');
+    public function responsibilities(){
+        return $this->hasMany(Responsibility::class, "user_id", 'id');
     }
 }

@@ -15,4 +15,7 @@ class Responsibility extends Model
         return $this->hasMany(Project::class, 'responsibility_id', 'id');
 
     }
+    public function users(){
+        return $this->belongsTo(User::class, "user_id", "id");
+    }
 }

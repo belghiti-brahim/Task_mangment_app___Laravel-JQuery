@@ -20,7 +20,5 @@ class Action extends Model
         return $this->belongsToMany(Context::class, "action_context", "action_id", "action_id");
     }
     
-    public function users(){
-        return $this->belongsTo(User::class, "user_id", "id");
-    }
+   
 }
