@@ -11,8 +11,18 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+                Catamaran: ['Catamaran', "sans-serif"],
+                // sans: ['Montserrat, "sans-serif'],
             },
+            height:{
+                "89" : "89px",
+                "144" : "144px",
+                "610" : '610px',
+                "987" : '987px',
+                "756" : '756px',
+            }
+        
         },
     },
 
