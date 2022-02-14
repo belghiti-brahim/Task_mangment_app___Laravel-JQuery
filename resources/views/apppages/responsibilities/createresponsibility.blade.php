@@ -74,8 +74,11 @@
                                     <select id="color" name="color" autocomplete="color-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                         <option>indigo</option>
+                                        <option>cyan</option>
+                                        <option>lime</option>
+                                        <option>pink</option>
                                         <option>orange</option>
-                                        <option>magneta</option>
+                                        <option>red</option>
                                     </select>
                                 </div>
                             </div>

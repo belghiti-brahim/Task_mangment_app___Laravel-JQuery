@@ -10,3 +10,13 @@
 .hierarchyl1{
     @apply font-Catamaran text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-left text-orange-400 font-black leading-10 md:leading-10;
 }
+.hierarchyl2{
+    @apply font-Catamaran text-left font-black text-gray-700 text-3xl;
+}
+.pageContentTitle{
+    @apply font-Catamaran text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-8xl text-left text-orange-400 font-black leading-10 md:leading-10;
+}
+.modelTitle{
+    @apply text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-left font-black leading-10 md:leading-10;
+
+}

@@ -180,9 +180,9 @@
                         <x-jet-authentication-card-logo />
                     </div>
                     <div class="flex space-x-8 items-center justify-between">
-                        <a class="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">about</a>
-                        <a class="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">faq</a>
-                        <a class="hidden md:block cursor-pointer text-gray-600 hover:text-white uppercase">Contact</a>
+                        <a class="hidden md:block cursor-pointer text-orange-200 hover:text-white ">about</a>
+                        <a class="hidden md:block cursor-pointer text-orange-200 hover:text-white ">faq</a>
+                        <a class="hidden md:block cursor-pointer text-orange-200 hover:text-white ">Contact</a>
                     </div>
                     <div class="flex flex-row space-x-8 items-center justify-between">
                         <a>
@@ -217,7 +217,7 @@
                         </a>
                     </div>
                 </div>
-                <p class="w-full text-center my-12 text-gray-600">Copyright © 2022 Brahim</p>
+                <p class="w-full text-center my-12 text-orange-200">Copyright © 2022 Brahim</p>
             </div>
         </div>
     </footer>

@@ -36,12 +36,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('project')->group(function () {
         Route::get('/create', [ProjectController::class, "create"])->name('createproject');
-        Route::get('/index', [ProjectController::class, "index"])->name("index");
+        Route::get('/index', [ProjectController::class, "index"])->name("indexprojects");
         Route::post('/store', [ProjectController::class, 'store'])->name("storeproject");
     });
     Route::prefix('actions')->group(function () {
         Route::get('/create', [ActionController::class, "create"])->name('creataction');
-        Route::get('/index', [ActionController::class, "index"])->name("index");
+        Route::get('/index', [ActionController::class, "index"])->name("indexactions");
         Route::post('/store', [ActionController::class, 'store'])->name("storeaction");
     });
 });
