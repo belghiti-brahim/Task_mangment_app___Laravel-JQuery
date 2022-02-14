@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Project;
 use App\Models\Responsibility;
 use App\Models\User;
@@ -73,7 +74,10 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::find($id);
+        $actions = Action::with("project")->where("project_id","=","$id")->get();
+
+        return view("apppages.projects.showproject", compact("project","actions"));
     }
 
     /**

@@ -53,7 +53,7 @@
                                                 class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
                                                 Je suis: </span>
                                             <input type="text" name="name" id="resonsibilityId"
-                                                class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                                class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                 placeholder="etudiant/directeur/freelancer...">
                                         </div>
                                     </div>
@@ -64,7 +64,7 @@
                                         courte </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="description" rows="3"
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                            class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                             placeholder="..."></textarea>
                                     </div>
                                 </div>
@@ -72,7 +72,7 @@
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="color" class="block text-sm font-medium text-gray-700">color</label>
                                     <select id="color" name="color" autocomplete="color-name"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                                         <option>indigo</option>
                                         <option>cyan</option>
                                         <option>lime</option>
@@ -84,7 +84,7 @@
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                 <button type="submit"
-                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+                                    class="btn">Save</button>
                             </div>
                         </div>
                     </form>

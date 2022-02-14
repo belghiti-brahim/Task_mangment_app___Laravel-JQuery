@@ -30,13 +30,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/create', [ResponsibilityController::class, "create"])->name('createresponsability');
         Route::get('/index', [ResponsibilityController::class, "index"])->name("resindex");
         Route::post('/store', [ResponsibilityController::class, 'store'])->name("storeresponsibility");
-        Route::get('/show{id}', [ResponsibilityController::class, 'show'])->name("showresponsibility");
+        Route::get('/show/{id}', [ResponsibilityController::class, 'show'])->name("showresponsibility");
+        Route::delete('/delete/{id}', [ResponsibilityController::class, 'destroy'])->name("deleteresponsibility");
+
 
     });
 
     Route::prefix('project')->group(function () {
         Route::get('/create', [ProjectController::class, "create"])->name('createproject');
         Route::get('/index', [ProjectController::class, "index"])->name("indexprojects");
+        Route::get('/show/{id}', [ProjectController::class, "show"])->name("showproject");
         Route::post('/store', [ProjectController::class, 'store'])->name("storeproject");
     });
     Route::prefix('actions')->group(function () {

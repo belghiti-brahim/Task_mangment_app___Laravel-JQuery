@@ -29,14 +29,14 @@
                                     @endif
                                     <div class="col-span-3 sm:col-span-2">
                                         <label for="actionId" class="block text-sm font-medium text-gray-700">
-                                            L
+                                            Déscription de l'action
                                         </label>
                                         <div class="mt-1 flex rounded-md shadow-sm">
                                             <span
                                                 class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
-                                                Je suis: </span>
+                                                faire: </span>
                                             <input type="text" name="description" id="actionId"
-                                                class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                                class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                 placeholder="etudiant/directeur/freelancer...">
                                         </div>
                                     </div>
@@ -47,15 +47,15 @@
                                         done </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="defintionOfDone" rows="3"
-                                            class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                                            class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                                             placeholder="..."></textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="project" class="block text-sm font-medium text-gray-700">color</label>
+                                    <label for="project" class="block text-sm font-medium text-gray-700">Projet</label>
                                     <select id="project" name="project" autocomplete="color-name"
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                                         @forelse ($projects as $project)
                                             <option value={{ $project->id }}>{{ $project->name }}</option>
 
@@ -71,12 +71,11 @@
                                     x-ref="datetimewidget"
                                     class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
                                     <label for="datetime"
-                                        class="flex-grow  block font-medium text-sm text-gray-700 mb-1">Date and
-                                        Time</label>
+                                        class="flex-grow  block font-medium text-sm text-gray-700 mb-1">date d'échéance de l'action </label>
                                     <div class="flex align-middle align-content-center">
                                         <input x-ref="datetime" type="text" id="datetime" data-input name="deadline"
                                             placeholder="Select.."
-                                            class="block w-full px-2 border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-l-md shadow-sm">
+                                            class="block w-full px-2 border-gray-300 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 rounded-l-md shadow-sm">
 
                                         <a class="h-11 w-10 input-button cursor-pointer rounded-r-md bg-transparent border-gray-300 border-t border-b border-r"
                                             title="clear" data-clear>
@@ -93,7 +92,7 @@
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                 <button type="submit"
-                                    class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+                                    class="btn">Save</button>
                             </div>
                         </div>
                     </form>

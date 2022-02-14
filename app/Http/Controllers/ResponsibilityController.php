@@ -56,9 +56,7 @@ class ResponsibilityController extends Controller
              'user_id' => $userid
         ]);
         $responsibilities = Responsibility::all();
-
-        // return view('apppages.responsibilities.index', compact("responsibilities"));
-       return redirect()->route('resindex')->with('message', 'Responsability Created successfully');
+       return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été créé avec succès');
 
     }
 
@@ -129,6 +127,8 @@ class ResponsibilityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $responsibility = Responsibility::find($id);
+        $responsibility->delete();
+            return response()->json(['success' => "la responsibilité a été suprimé avec success"]);
     }
 }
