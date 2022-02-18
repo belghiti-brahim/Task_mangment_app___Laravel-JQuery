@@ -17,8 +17,9 @@ class ActionController extends Controller
      */
     public function index()
     {
-        $allactions = Action::find()->all();
-        $actionswithuser = Action::find()->user();
+        $actions = Action::all();
+        return view('apppages.actions.indexactions', compact("actions"));
+
     }
 
     /**
@@ -103,6 +104,9 @@ class ActionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $action = Action::find($id);
+        $action->delete();
+            return response()->json(['success' => "la responsibilité a été suprimé avec success"]);
     }
+    
 }

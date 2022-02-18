@@ -18,7 +18,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view('apppages.projects.indexproject', compact("projects"));
     }
 
     /**
@@ -48,14 +49,13 @@ class ProjectController extends Controller
             'description' => 'required',
             'responsibility' => 'required',
         ]);
-    //   dd($request);
+        //   dd($request);
 
-      if ($request->project === "undefined"){
-          $projectId = null;
-      }
-      else{
-        $projectId = $request->project;
-      }
+        if ($request->project === "undefined") {
+            $projectId = null;
+        } else {
+            $projectId = $request->project;
+        }
         Project::create([
             'name' => $request->name,
             'definition' => $request->description,
@@ -75,9 +75,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        $actions = Action::with("project")->where("project_id","=","$id")->get();
+        $actions = Action::with("project")->where("project_id", "=", "$id")->get();
 
-        return view("apppages.projects.showproject", compact("project","actions"));
+        return view("apppages.projects.showproject", compact("project", "actions"));
     }
 
     /**
@@ -88,7 +88,16 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        $project = Project::find($id);
+        $project_id = $project->responsibility_id;
+
+        $responsibilities = Responsibility::all();
+        $oldresponsibility = Responsibility::where("id", "=", "$project_id")->get();
+        // dd($oldresponsibility);
+       
+        $projects = Project::all();
+        return view("apppages.projects.editproject", compact("responsibilities", "project", "projects", "oldresponsibility"));
     }
 
     /**
@@ -100,7 +109,30 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+
+            'name' => 'required',
+            'description' => 'required',
+            'responsibility' => 'required',
+        ]);
+        //   dd($request);
+
+        if ($request->project === "undefined") {
+            $projectId = null;
+        } else {
+            $projectId = $request->project;
+        }
+        $project = Project::find($id);
+
+        $project->name = $request->name;
+        $project->definition = $request->description;
+        $project->responsibility_id = $request->responsibility;
+        $project->project_id = $projectId;
+        $project->save();
+        return redirect()->route('resindex')->with([
+            'success' => 'le projet a été editée'
+        ]);
     }
 
     /**
@@ -111,6 +143,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::find($id);
+        if ($project) {
+            $project->delete();
+        }
+        return response()->json(['success' => "le projet a été suprimé avec success"]);
     }
 }

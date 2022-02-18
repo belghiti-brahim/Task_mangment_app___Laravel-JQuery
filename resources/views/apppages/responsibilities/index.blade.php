@@ -34,7 +34,7 @@
                                     {{ $responsibility->name }}</p>
                             </a>
                             <div class="flex flex-row">
-                                <a href="javascript:void(0)" onclick="" class="w-8 h-8 hover:w-12 hover:h-12"> <img
+                                <a href="{{route("editresponsibility", $responsibility->id)}}" class="w-8 h-8 hover:w-12 hover:h-12"> <img
                                         src="{{ asset('images/edit.png') }}" alt="editbutton">
                                 </a>
                                 <a href="javascript:void(0)"
@@ -58,25 +58,4 @@
 
 
     </div>
-    <script>
-        console.log("working");
-
-        function deleteResponsibility(id) {
-            if (confirm("voulez-vous vraiment supprimer cette responsabilité?")) {
-                $.ajax({
-                    url: 'delete/' + id,
-                    type: 'DELETE',
-                    data: {
-                        _token: $("input[name=_token]").val()
-                    },
-                    success: function(response) {
-                        console.log(response);
-                        $("#res" + id).remove();
-                    }
-
-                })
-            }
-
-        }
-    </script>
-</x-app-layout>
+   </x-app-layout>

@@ -70,6 +70,10 @@ class ResponsibilityController extends Controller
     {
         $responsibility = Responsibility::find($id);
         $projects = Project::with("responsibility")->where("responsibility_id","=","$id")->get();
+        // $subprojects = Project::whereNull('project_id')->get();
+        // $subprojects = Project::where('project_id','!=', "null")->get();
+        // $subprojects = $projects->where('project_id','!=', "null");
+            // dd($$subprojects );
         return view("apppages.responsibilities.showresponsibility", compact("responsibility","projects"));
     }
 
@@ -81,7 +85,8 @@ class ResponsibilityController extends Controller
      */
     public function edit($id)
     {
-        //
+        $responsibility = Responsibility::find($id);
+        return view("apppages.responsibilities.editresponsibility", compact("responsibility"));
     }
 
     /**
@@ -93,29 +98,23 @@ class ResponsibilityController extends Controller
      */
     public function update(Request $request, $id)
     { {
-            $responsibilities = Responsibility::all();
-
             $this->validate($request, [
 
                 'name' => 'required',
                 'description' => 'required|string',
-                'family' => 'required',
-                'continent' => 'required',
+                'color' => 'required',
             ]);
 
             $responsibility = Responsibility::find($id);
 
-
-            // $animal->name = $request->name;
-            // $animal->description = $request->description;
-            // $animal->image = $image;
-            // $animal->family_id = $request->family;
-            // $animal->Continents()->sync($request['continent']);
-            // $animal->save();
-
-            // return redirect()->intended()->with([
-            //     'success' => 'Animal have been edited successfully'
-            // ]);
+            $responsibility->name = $request->name;
+            $responsibility->description = $request->description;
+            $responsibility->color = $request->color;
+            $responsibility->save();
+          
+            return redirect()->route('resindex')->with([
+                'success' => 'la responsibilité a été editée'
+            ]);
         }
     }
 

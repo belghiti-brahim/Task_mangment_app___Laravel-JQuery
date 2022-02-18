@@ -49,6 +49,57 @@
     @stack('modals')
 
     @livewireScripts
+    <script>
+        function deleteAction(id) {
+            if (confirm("voulez-vous vraiment supprimer cette action?")) {
+                $.ajax({
+                    url: 'delete/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: $("input[name=_token]").val()
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $("#action" + id).remove();
+                    }
+
+                })
+            }
+
+        }
+
+        function deleteResponsibility(id) {
+            if (confirm("voulez-vous vraiment supprimer cette responsabilité?")) {
+                $.ajax({
+                    url: 'delete/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: $("input[name=_token]").val()
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $("#res" + id).remove();
+                    }
+                })
+            }
+        }
+
+        function deleteProject(id) {
+            if (confirm("voulez-vous vraiment supprimer ce projet?")) {
+                $.ajax({
+                    url: 'delete/' + id,
+                    type: 'DELETE',
+                    data: {
+                        _token: $("input[name=_token]").val()
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        $("#project" + id).remove();
+                    }
+                })
+            }
+        }
+    </script>
 </body>
 
 </html>

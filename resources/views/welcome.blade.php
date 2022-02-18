@@ -55,7 +55,7 @@
             style="background-image: url('{{ asset('images/hero2.jpg') }}'); background-size: cover;   background-repeat: no-repeat; background-position: center center;"
             class="bg-gray-100 h-756">
             <div class="container mx-auto flex flex-col items-start gap-y-8 py-12 sm:py-24">
-                <div class=" lg:flex justify-start items-start flex-col gap-y-6 mb-5 sm:mb-10">
+                <div class=" lg:flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">
                     <h1 class="hierarchyl1">
                         Libérez votre espace mental<br>
                         Organisez-vous efficacement,
@@ -63,8 +63,7 @@
                     </h1>
 
                     <p class="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-left text-sm sm:text-lg">
-                        Avec la solution digital "clarté".
-                        Ayez l'esprit tranquille<br> en ajoutant toutes vos tâches à votre to-do list</p>
+                        Avec la solution digital "clarté".<br>  Ayez l'esprit tranquille en ajoutant toutes <br> vos tâches à votre to-do list</p>
                 </div>
                 <div class="flex justify-center items-start">
                     <a href="{{ route('register') }}"
@@ -167,7 +166,7 @@
 
     </main>
     <!-- component -->
-    <footer class="w-full  flex items-center justify-center bg-neutral-800">
+    <footer class="w-full  flex items-center justify-center bg-gray-800">
         <div class="md:w-2/3 w-full px-4 text-white flex flex-col">
             {{-- <div class="flex mt-8 flex-col md:flex-row md:justify-between">
                 <div class="w-44 pt-6 md:pt-0">

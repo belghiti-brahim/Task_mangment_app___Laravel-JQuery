@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ResponsibilityController;
+use App\Models\Project;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/store', [ResponsibilityController::class, 'store'])->name("storeresponsibility");
         Route::get('/show/{id}', [ResponsibilityController::class, 'show'])->name("showresponsibility");
         Route::delete('/delete/{id}', [ResponsibilityController::class, 'destroy'])->name("deleteresponsibility");
+        Route::get('/edit/{id}', [ResponsibilityController::class, 'edit'])->name("editresponsibility");
+        Route::put('/update/{id}', [ResponsibilityController::class, 'update'])->name("updateresponsibility");
 
 
     });
@@ -41,10 +44,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/index', [ProjectController::class, "index"])->name("indexprojects");
         Route::get('/show/{id}', [ProjectController::class, "show"])->name("showproject");
         Route::post('/store', [ProjectController::class, 'store'])->name("storeproject");
+        Route::delete('/delete/{id}', [ProjectController::class, 'destroy'])->name("deleteproject");
+        Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name("editproject");
+        Route::put('/update/{id}', [ProjectController::class, 'update'])->name("updateproject");
+
     });
     Route::prefix('actions')->group(function () {
         Route::get('/create', [ActionController::class, "create"])->name('creataction');
         Route::get('/index', [ActionController::class, "index"])->name("indexactions");
         Route::post('/store', [ActionController::class, 'store'])->name("storeaction");
+        Route::delete('/delete/{id}', [ActionController::class, 'destroy'])->name("deleteaction");
+
     });
 });
