@@ -30,7 +30,7 @@
                         <div id="res{{ $responsibility->id }}"
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
                             <a href="{{ route('showresponsibility', $responsibility->id) }}">
-                                <p class='hover:text-6xl modelTitle text-{{ $responsibility->color }}-500'>
+                                <p style="color:{{ $responsibility->color }}" class='hover:text-6xl modelTitle'>
                                     {{ $responsibility->name }}</p>
                             </a>
                             <div class="flex flex-row">

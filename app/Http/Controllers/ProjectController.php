@@ -29,8 +29,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-
-        $responsibilities = Responsibility::all();
+        $authid= Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
+        // $responsibilities = Responsibility::all();
         $projects = Project::all();
         return view("apppages.projects.createproject", compact("responsibilities", "projects"));
     }
@@ -62,7 +63,8 @@ class ProjectController extends Controller
             'responsibility_id' => $request->responsibility,
             'project_id' => $projectId
         ]);
-        $responsibilities = Responsibility::all();
+        $authid= Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         return view('apppages.responsibilities.index', compact("responsibilities"));
     }
 
@@ -92,7 +94,8 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $project_id = $project->responsibility_id;
 
-        $responsibilities = Responsibility::all();
+        $authid= Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $oldresponsibility = Responsibility::where("id", "=", "$project_id")->get();
         // dd($oldresponsibility);
        

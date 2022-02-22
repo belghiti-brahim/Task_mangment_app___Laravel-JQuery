@@ -21,11 +21,11 @@ class Project extends Model
     }
     public function parent()
 {
-    return $this->belongsTo(Project::class,'parent_id')->where('parent_id',0)->with('parent');
+    return $this->belongsTo(Project::class,'project_id')->where('project_id',0)->with('parent');
 }
 
 public function children()
 {
-    return $this->hasMany(Project::class,'parent_id')->with('children');
+    return $this->hasMany(Project::class,'project_id')->with('children');
 }
 }

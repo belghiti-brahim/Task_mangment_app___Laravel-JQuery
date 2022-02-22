@@ -16,10 +16,9 @@ class ResponsibilityController extends Controller
      */
     public function index()
     {
-       $authid= Auth::user()->id;
+        $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         return view('apppages.responsibilities.index', compact("responsibilities"));
-
     }
 
     /**
@@ -50,14 +49,13 @@ class ResponsibilityController extends Controller
         ]);
 
         Responsibility::create([
-             'name' => $request->name,
-             'description' => $request->description,
-             'color' => $request->color,
-             'user_id' => $userid
+            'name' => $request->name,
+            'description' => $request->description,
+            'color' => $request->color,
+            'user_id' => $userid
         ]);
         $responsibilities = Responsibility::all();
-       return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été créé avec succès');
-
+        return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été créé avec succès');
     }
 
     /**
@@ -69,12 +67,22 @@ class ResponsibilityController extends Controller
     public function show($id)
     {
         $responsibility = Responsibility::find($id);
-        $projects = Project::with("responsibility")->where("responsibility_id","=","$id")->get();
+        // $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->get();
+        // $Projects = Project::with("responsibility")->where("responsibility_id", "=", "$id");
+        $projects = Project::with("children")->whereNull('project_id')->get();
+        // $Projects = Project::with("children")->get();
+
+        // $subprojects = $Projects->with('children')->get();
+        // foreach ($Projects as $Project) {
+        //     return $subprojects = $Project->with('children')->get();
+        // }
+           // $subprojects = Project::with("parent")->get();
         // $subprojects = Project::whereNull('project_id')->get();
         // $subprojects = Project::where('project_id','!=', "null")->get();
         // $subprojects = $projects->where('project_id','!=', "null");
-            // dd($$subprojects );
-        return view("apppages.responsibilities.showresponsibility", compact("responsibility","projects"));
+
+        // dd($projects);
+        return view("apppages.responsibilities.showresponsibility", compact("responsibility", "projects"));
     }
 
     /**
@@ -111,7 +119,7 @@ class ResponsibilityController extends Controller
             $responsibility->description = $request->description;
             $responsibility->color = $request->color;
             $responsibility->save();
-          
+
             return redirect()->route('resindex')->with([
                 'success' => 'la responsibilité a été editée'
             ]);
@@ -128,6 +136,6 @@ class ResponsibilityController extends Controller
     {
         $responsibility = Responsibility::find($id);
         $responsibility->delete();
-            return response()->json(['success' => "la responsibilité a été suprimé avec success"]);
+        return response()->json(['success' => "la responsibilité a été suprimé avec success"]);
     }
 }

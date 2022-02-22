@@ -29,6 +29,8 @@ class ActionController extends Controller
      */
     public function create()
     {
+        $authid= Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $projects = Project::all();
         return view("apppages.actions.createaction", compact("projects"));
     }
