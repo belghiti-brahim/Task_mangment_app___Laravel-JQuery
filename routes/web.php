@@ -54,6 +54,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/index', [ActionController::class, "index"])->name("indexactions");
         Route::post('/store', [ActionController::class, 'store'])->name("storeaction");
         Route::delete('/delete/{id}', [ActionController::class, 'destroy'])->name("deleteaction");
+        Route::get('/edit/{id}', [ActionController::class, 'edit'])->name("editaction");
+        Route::put('/update/{id}', [ActionController::class, 'update'])->name("updateaction");
 
     });
 });

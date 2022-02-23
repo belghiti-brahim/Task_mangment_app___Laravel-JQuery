@@ -15,10 +15,10 @@
                     <x-jet-nav-link href="{{ route('resindex') }}" :active="request()->routeIs('resindex')">
                         {{ __('Les résponsibilités') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('indexprojects') }}" :active="request()->routeIs('createproject')">
+                    <x-jet-nav-link href="{{ route('indexprojects') }}" :active="request()->routeIs('indexprojects')">
                         {{ __('les projets') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('creataction')">
+                    <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
                         {{ __('les actions') }}
                     </x-jet-nav-link>
                 </div>

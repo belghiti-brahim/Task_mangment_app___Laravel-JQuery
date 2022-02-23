@@ -30,35 +30,38 @@
                 {{-- {{dd($projects)}} --}}
                 <div class="grid grid-cols-2 gap-6">
                     @forelse ($projects as $project)
-                        <div style="background-color:{{ $responsibility->color }}; opacity: 0.8;"
-                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
-                            <a href="{{ route('showproject', $project->id) }}">
-                                <p class="">{{ $project->name }} </p>
-                            </a>
-                            <div class="flex flex-row">
-                                <a href="{{ route('editproject', $project->id) }}"
-                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img src="{{ asset('images/edit.png') }}"
-                                        alt="editbutton">
+                        <div
+                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-48 flex flex-col items-start justify-around">
+                            <div class="flex flex-row items-center justify-center gap-x-44">
+                                <a href="{{ route('showproject', $project->id) }}">
+                                    <p class="">{{ $project->name }} </p>
                                 </a>
-                                <a href="javascript:void(0)" onclick="deleteProject({{ $project->id }})"
-                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img
-                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                </a>
+                                <div class="flex flex-row">
+                                    <a href="{{ route('editproject', $project->id) }}"
+                                        class="w-8 h-8 hover:w-12 hover:h-12"> <img
+                                            src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                    </a>
+                                    <a href="javascript:void(0)" onclick="deleteProject({{ $project->id }})"
+                                        class="w-8 h-8 hover:w-12 hover:h-12"> <img
+                                            src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                    </a>
+                                </div>
                             </div>
                             {{-- {{dd($project->responsibility->name)}} --}}
+
                             @forelse($project->children as $subproject)
                                 <div
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
+                                    class="bg-gray-200 overflow-hidden shadow-xl sm:rounded-lg w-64 h-12 flex flex-row items-center justify-around">
                                     <a href="{{ route('showproject', $subproject->id) }}">
-                                        <p class="">{{ $subproject->name }} </p>
+                                        <p>{{ $subproject->name }} </p>
                                     </a>
                                     <div class="flex flex-row">
                                         <a href="{{ route('editproject', $subproject->id) }}"
-                                            class="w-8 h-8 hover:w-12 hover:h-12"> <img
+                                            class="w-6 h-6 hover:w-8 hover:h-8"> <img
                                                 src="{{ asset('images/edit.png') }}" alt="editbutton">
                                         </a>
                                         <a href="javascript:void(0)" onclick="deleteProject({{ $subproject->id }})"
-                                            class="w-8 h-8 hover:w-12 hover:h-12"> <img
+                                            class="w-6 h-6 hover:w-8 hover:h-8"> <img
                                                 src="{{ asset('images/delete.png') }}" alt="deltebutton">
                                         </a>
                                     </div>

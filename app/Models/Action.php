@@ -17,7 +17,7 @@ class Action extends Model
 
     public function contexts()
     {
-        return $this->belongsToMany(Context::class, "action_context", "action_id", "action_id");
+        return $this->belongsToMany(Context::class, "action_context", "action_id", "context_id");
     }
     
    

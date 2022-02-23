@@ -45,13 +45,13 @@ class ResponsibilityController extends Controller
 
             'name' => 'required',
             'description' => 'required',
-            'color' => 'required',
         ]);
 
+        // $responsibilitycolor = 'bg' . '-' . $request->color . '-' . '400';
+        // dd($responsibilitycolor);
         Responsibility::create([
             'name' => $request->name,
             'description' => $request->description,
-            'color' => $request->color,
             'user_id' => $userid
         ]);
         $responsibilities = Responsibility::all();
@@ -76,7 +76,7 @@ class ResponsibilityController extends Controller
         // foreach ($Projects as $Project) {
         //     return $subprojects = $Project->with('children')->get();
         // }
-           // $subprojects = Project::with("parent")->get();
+        // $subprojects = Project::with("parent")->get();
         // $subprojects = Project::whereNull('project_id')->get();
         // $subprojects = Project::where('project_id','!=', "null")->get();
         // $subprojects = $projects->where('project_id','!=', "null");
@@ -110,14 +110,12 @@ class ResponsibilityController extends Controller
 
                 'name' => 'required',
                 'description' => 'required|string',
-                'color' => 'required',
             ]);
 
             $responsibility = Responsibility::find($id);
 
             $responsibility->name = $request->name;
             $responsibility->description = $request->description;
-            $responsibility->color = $request->color;
             $responsibility->save();
 
             return redirect()->route('resindex')->with([

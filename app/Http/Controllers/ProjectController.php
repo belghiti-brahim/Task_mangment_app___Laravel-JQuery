@@ -18,7 +18,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::with('children')->get();
         return view('apppages.projects.indexproject', compact("projects"));
     }
 
@@ -77,7 +77,10 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        $actions = Action::with("project")->where("project_id", "=", "$id")->get();
+        // $actions = Action::with("project")->where("project_id", "=", "$id")->get();
+        $actions = Action::with("contexts")->with("project")->where("project_id", "=", "$id")->get();
+        // $action = $actions->pivot;
+        // dd($actions); 
 
         return view("apppages.projects.showproject", compact("project", "actions"));
     }

@@ -1,11 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
-        <p>fgqg</p>
+
 
     </x-slot>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <!--
-  This example requires Tailwind CSS v2.0+ 
+  This example requires Tailwind CSS v2.0+
   
   This example requires some changes to your config:
   
@@ -55,7 +55,7 @@
                                                 Je suis: </span>
                                             <input type="text" name="name" id="resonsibilityId"
                                                 class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                                value="{{old('name', $responsibility->name)}}">
+                                                value="{{ old('name', $responsibility->name) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -66,27 +66,12 @@
                                     <div class="mt-1">
                                         <textarea id="about" name="description" rows="3"
                                             class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                            placeholder="...">{{old('color',$responsibility->description)}}</textarea>
+                                            placeholder="...">{{ old('color', $responsibility->description) }}</textarea>
                                     </div>
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="color" class="block text-sm font-medium text-gray-700">color</label>
-                                    <select id="color" name="color" 
-                                        class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
-                                        <option>{{old('color', $responsibility->color)}}</option>
-                                        <option>indigo</option>
-                                        <option>cyan</option>
-                                        <option>lime</option>
-                                        <option>pink</option>
-                                        <option>orange</option>
-                                        <option>red</option>
-                                    </select>
                                 </div>
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit"
-                                    class="btn">Save</button>
+                                <button type="submit" class="btn">Save</button>
                             </div>
                         </div>
                     </form>

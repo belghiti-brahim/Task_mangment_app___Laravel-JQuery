@@ -4,12 +4,6 @@
             :active="request()->routeIs('createresponsability')">
             {{ __('Créer une résponsabilité') }}
         </x-jet-nav-link>
-        <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
-            {{ __('Créer un projet') }}
-        </x-jet-nav-link>
-        <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
-            {{ __('Créer une action') }}
-        </x-jet-nav-link>
     </x-slot>
 
 
@@ -26,21 +20,23 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
                 <div class="flex flex-col items-center justify-center gap-6">
+                    {{-- {{ dd($responsibilities) }} --}}
+
                     @forelse ($responsibilities as $responsibility)
                         <div id="res{{ $responsibility->id }}"
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
                             <a href="{{ route('showresponsibility', $responsibility->id) }}">
-                                <p style="color:{{ $responsibility->color }}" class='hover:text-6xl modelTitle'>
+                                <p class='hover:text-6xl modelTitle'>
                                     {{ $responsibility->name }}</p>
                             </a>
                             <div class="flex flex-row">
-                                <a href="{{route("editresponsibility", $responsibility->id)}}" class="w-8 h-8 hover:w-12 hover:h-12"> <img
-                                        src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                <a href="{{ route('editresponsibility', $responsibility->id) }}"
+                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img src="{{ asset('images/edit.png') }}"
+                                        alt="editbutton">
                                 </a>
-                                <a href="javascript:void(0)"
-                                    onclick="deleteResponsibility({{ $responsibility->id }})"
-                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img
-                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                <a href="javascript:void(0)" onclick="deleteResponsibility({{ $responsibility->id }})"
+                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img src="{{ asset('images/delete.png') }}"
+                                        alt="deltebutton">
                                 </a>
                             </div>
                         </div>
@@ -58,4 +54,4 @@
 
 
     </div>
-   </x-app-layout>
+</x-app-layout>

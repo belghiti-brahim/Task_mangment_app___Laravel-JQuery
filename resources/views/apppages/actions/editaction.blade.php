@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-
+     
 
     </x-slot>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -13,8 +13,9 @@
                     </div>
                 </div>
                 <div class="mt-5 md:mt-0 md:col-span-2">
-                    <form action="{{ route('storeaction') }}" method="POST">
+                    <form action="{{ route('updateaction', $action->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                                 <div class="grid grid-cols-3 gap-6">

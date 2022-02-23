@@ -29,8 +29,8 @@
                     @forelse ($actions as $action)
                         <div id="action{{ $action->id }}"
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-around">
-                            <a href="{{ route('showproject', $action->id) }}">
-                                <p class='hover:text-4xl hierarchyl2 '>
+                            <a href="">
+                                <p class=''>
                                     {{ $action->description }}</p>
                             </a>
                             <div class="flex flex-row">
