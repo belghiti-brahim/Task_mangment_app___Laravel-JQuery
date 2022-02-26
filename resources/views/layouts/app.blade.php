@@ -52,8 +52,10 @@
     <script>
         function deleteAction(id) {
             if (confirm("voulez-vous vraiment supprimer cette action?")) {
+                var main_url = "http://127.0.0.1:8000";
+                var referrer =  "http://127.0.0.1:8000/actions/delete/" + id; 
                 $.ajax({
-                    url: 'delete/' + id,
+                    url: referrer,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()
@@ -86,8 +88,10 @@
 
         function deleteProject(id) {
             if (confirm("voulez-vous vraiment supprimer ce projet?")) {
+                var main_url = "http://127.0.0.1:8000";
+                var referrer =  "http://127.0.0.1:8000/project/delete/" + id; 
                 $.ajax({
-                    url: 'delete/' + id,
+                    url: referrer,
                     type: 'DELETE',
                     data: {
                         _token: $("input[name=_token]").val()

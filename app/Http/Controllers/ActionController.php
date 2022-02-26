@@ -58,11 +58,11 @@ class ActionController extends Controller
             'project_id' => $request->project,
             'deadline' => $request->deadline,
         ]);
-        
+
 
         $newaction->contexts()->attach($status);
-        $responsibilities = Responsibility::all();
-        return view('apppages.responsibilities.index', compact("responsibilities"));
+        $projectid = $request->project;
+        return redirect()->route('showproject',  $projectid)->with('message', 'ton action a été créée avec succès');
     }
 
     /**
@@ -83,7 +83,7 @@ class ActionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-     {
+    {
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $projects = Project::all();
@@ -109,32 +109,22 @@ class ActionController extends Controller
         ]);
         $status = $request->status;
 
-        $action = Action::find($id);
+        $editaction = Action::find($id);
 
-      
-            $action->description = $request->description;
-            $action->definition_of_done = $request->defintionOfDone;
-            $action->project_id = $request->project;
-            $action->deadline = $request->deadline;
-            $action->save;
-       
-        
+        $editaction->description = $request->description;
+        $editaction->definition_of_done = $request->defintionOfDone;
+        $editaction->project_id = $request->project;
+        $editaction->deadline = $request->deadline;
+        $editaction->save();
+        // dd($editaction);
 
-        $action->contexts()->sync($status);
+
+        $editaction->contexts()->sync($status);
         $responsibilities = Responsibility::all();
-        $project = $action->project()->get();
+        $project = $editaction->project()->get();
 
-        // $project = Project::find($id);
-        // $actions = Action::with("project")->where("project_id", "=", "$id")->get();
-        $projectid = $action->project_id;
-        // dd($projectid);
-        $actions = Action::with("contexts")->with("project")->where("project_id", "=", "$projectid")->get();
-        // $action = $actions->pivot;
-        // dd($actions); 
-
-        return view("apppages.projects.showproject", compact("project", "actions"));
-        // return view('apppages.project.index', compact("responsibilities"));
-    
+        $projectid = $request->project;
+        return redirect()->route('showproject',  $projectid)->with('message', 'ton action a été modifiée avec succès');
     }
 
     /**

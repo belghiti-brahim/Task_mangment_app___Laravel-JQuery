@@ -1,23 +1,31 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <x-jet-nav-link href="{{ route('createresponsability') }}"
+        <x-jet-nav-link href="{{ route('createresponsability') }}"
             :active="request()->routeIs('createresponsability')">
             {{ __('Créer une résponsabilité') }}
-        </x-jet-nav-link> --}}
+        </x-jet-nav-link>
         <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
             {{ __('Créer un projet') }}
         </x-jet-nav-link>
-        {{-- <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
+        <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
             {{ __('Créer une action') }}
-        </x-jet-nav-link> --}}
+        </x-jet-nav-link>
     </x-slot>
 
 
     <main class="relative min-h-screen">
+        {{-- <div class="px-10 relative min-h-screen">
+            <div class="flex flex-col">
+                <h1 class="pageContentTitle">Tous mes projets</h1>
+                <p class="text-kramp-500">différents aspects de mon travail et de ma vie personnelle auxquels je souhaite
+                    consacrer
+                    mon temps de manière équilibrée, en espérant obtenir de bons résultats dans chacun d'eux .</p>
+            </div>
+        </div> --}}
         <form action="{{ route('find') }}" method="GET">
             @csrf
-            <div class="px-4 py-3 flex flex-row items-end">
-                <div class="sm:p-6">
+            <div class="px-12 flex flex-row items-end">
+                <div class="px-4 py-5 space-y-6 sm:p-6">
                     <div class="">
                         <div class="">
                             <label for="resonsibilityId" class="block text-sm font-medium text-gray-700">
@@ -31,14 +39,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="py-6 text-left">
+                <div class="px-2 py-6 text-left sm:px-6">
                     <button type="submit" class="btn">aller / retour</button>
                 </div>
             </div>
         </form>
-        <div class="ml-auto py-5">
+        <div class="ml-auto py-12 ">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
                 <div class="grid grid-cols-3 gap-6">
+
                     @forelse ($projects as $project)
                         <div id="project{{ $project->id }}"
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
@@ -55,17 +65,19 @@
                                         alt="deltebutton">
                                 </a>
                             </div>
+
                         </div>
+
                     @empty
                         <div
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                            <p class="modelTitle">tu n'a aucun projet</p>
+                            <p class="modelTitle">tu n'as aucun projet avec ce nom</p>
                         </div>
                     @endforelse
                 </div>
             </div>
         </div>
-        {{ $projects->links('pagination::simple-tailwind') }}
+
 
     </main>
 

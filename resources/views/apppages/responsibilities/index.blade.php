@@ -6,7 +6,12 @@
         </x-jet-nav-link>
     </x-slot>
 
-
+    @if (session('message'))
+        <div class="flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3" x-data="{ show: true }"
+            x-show="show" x-init="setTimeout(() => show = false, 1500)">
+            <p>{{ session('message') }}</p>
+        </div>
+    @endif
     <main class="relative min-h-screen">
         <div class="px-10 relative md:fixed md:w-2/5 min-h-screen in flex items-center justify-content">
             <div class="flex flex-col">
@@ -24,7 +29,7 @@
 
                     @forelse ($responsibilities as $responsibility)
                         <div id="res{{ $responsibility->id }}"
-                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
+                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
                             <a href="{{ route('showresponsibility', $responsibility->id) }}">
                                 <p class='hover:text-6xl modelTitle'>
                                     {{ $responsibility->name }}</p>

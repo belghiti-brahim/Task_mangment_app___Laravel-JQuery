@@ -37,7 +37,7 @@
                                                 faire: </span>
                                             <input type="text" name="description" id="actionId"
                                                 class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                                placeholder="etudiant/directeur/freelancer...">
+                                               >
                                         </div>
                                     </div>
                                 </div>

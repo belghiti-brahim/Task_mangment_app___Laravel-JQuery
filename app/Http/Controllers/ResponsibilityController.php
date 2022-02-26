@@ -55,7 +55,7 @@ class ResponsibilityController extends Controller
             'user_id' => $userid
         ]);
         $responsibilities = Responsibility::all();
-        return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été créé avec succès');
+        return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été crée avec succès');
     }
 
     /**
@@ -68,8 +68,8 @@ class ResponsibilityController extends Controller
     {
         $responsibility = Responsibility::find($id);
         // $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->get();
-        // $Projects = Project::with("responsibility")->where("responsibility_id", "=", "$id");
-        $projects = Project::with("children")->whereNull('project_id')->get();
+        $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->whereNull('project_id')->get();
+        // $projects = Project::with("children")->whereNull('project_id')->get();
         // $Projects = Project::with("children")->get();
 
         // $subprojects = $Projects->with('children')->get();
@@ -118,11 +118,10 @@ class ResponsibilityController extends Controller
             $responsibility->description = $request->description;
             $responsibility->save();
 
-            return redirect()->route('resindex')->with([
-                'success' => 'la responsibilité a été editée'
-            ]);
-        }
+            return redirect()->route('resindex')->with('message', 'Ta responsabilité a été modifiée avec succès');
+        
     }
+}
 
     /**
      * Remove the specified resource from storage.

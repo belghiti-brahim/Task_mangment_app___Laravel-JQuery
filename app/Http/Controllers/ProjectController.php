@@ -18,8 +18,14 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::with('children')->get();
+        $projects = Project::with('children')->paginate(9);
         return view('apppages.projects.indexproject', compact("projects"));
+    }
+ 
+    public function search(request $request){
+        $projectname = $request->input('findproject');
+        $projects = Project::where('name', 'LIKE', '%' . $projectname . '%')->get();
+        return view('apppages.projects.oneproject', compact("projects"));
     }
 
     /**
@@ -63,9 +69,15 @@ class ProjectController extends Controller
             'responsibility_id' => $request->responsibility,
             'project_id' => $projectId
         ]);
+
+        // dd($request->responsibility);
         $authid= Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
-        return view('apppages.responsibilities.index', compact("responsibilities"));
+         $responsibilityid = $request->responsibility;
+        //  dd($responsibilities);
+
+        return redirect()->route('showresponsibility', $responsibilityid)->with('message', 'Ton projet a été crée avec succès');
+        // return view('apppages.responsibilities.index', compact("responsibilities"));
     }
 
     /**
@@ -136,9 +148,14 @@ class ProjectController extends Controller
         $project->responsibility_id = $request->responsibility;
         $project->project_id = $projectId;
         $project->save();
-        return redirect()->route('resindex')->with([
-            'success' => 'le projet a été editée'
-        ]);
+        // return redirect()->route('resindex')->with('message', 'Ton projet a été modifié avec succès');
+
+        $authid= Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
+         $responsibilityid = $request->responsibility;
+        //  dd($responsibilities);
+
+        return redirect()->route('showresponsibility', $responsibilityid)->with('message', 'Ton projet a été modifié avec succès');
     }
 
     /**

@@ -5,7 +5,7 @@
     </x-slot>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
         <!--
-  This example requires Tailwind CSS v2.0+ 
+  This example requires Tailwind CSS v2.0+
   
   This example requires some changes to your config:
   
@@ -55,7 +55,7 @@
                                                 Nom du projet: </span>
                                             <input type="text" name="name" id="projectId"
                                                 class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                                value="{{old('name',$project->name)}}">
+                                                value="{{ old('name', $project->name) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -65,28 +65,28 @@
                                         courte </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="description" rows="3"
-                                            class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                            >{{old('description',$project->definition)}}</textarea>
+                                            class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{ old('description', $project->definition) }}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
 
 
-                                    <label for="color" class="block text-sm font-medium text-gray-700">responsabilité</label>
+                                    <label for="color" class="block text-sm font-medium text-gray-700">responsabilité
+                                    </label>
 
                                     <select id="color" name="responsibility" autocomplete="color-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
 
-                                        @forelse ($responsibilities as $responsibility)
-                                                    @foreach ($oldresponsibility as $old)
-                                            <option value={{ $responsibility->id }}>{{ old('responsibility',$old->name) }}
-                                                <option value={{ $responsibility->id }}>{{ $responsibility->name }}
-                                            </option>
-                                                        @endforeach
-                                            @empty 
-                                            <option>tu n'a aucun résponsibilité creé.</option>
 
+                                        <option value={{ $project->responsibility->id }}>
+                                            {{ old('responsibility', $project->responsibility->name) }}
+                                            @forelse ($responsibilities as $responsibility)
+                                        <option value={{ $responsibility->id }}>{{ $responsibility->name }}
+                                        </option>
+
+                                    @empty
+                                        <option>tu n'a aucun résponsibilité creé.</option>
                                         @endforelse
                                     </select>
 
@@ -94,29 +94,27 @@
                                 <div class="col-span-6 sm:col-span-3">
 
 
-                                    <label for="project" class="block text-sm font-medium text-gray-700">ce projet est le sous projet de</label>
+                                    <label for="project" class="block text-sm font-medium text-gray-700">ce projet est
+                                        le sous projet de</label>
 
                                     <select id="project" name="project" autocomplete="project-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
-                                        {{-- <option selected>Open this select menu</option> --}}
+                                        {{-- <option value="" selected>Open this select menu</option> --}}
                                         <option value="">none
                                         </option>
                                         @forelse ($projects as $project)
-                                        
                                             <option value={{ $project->id }}>{{ old('color', $project->name) }}
                                             </option>
 
-                                            @empty 
+                                        @empty
                                             <option>tu n'a aucun projet creé.</option>
-
                                         @endforelse
                                     </select>
 
                                 </div>
                             </div>
                             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                <button type="submit"
-                                    class="btn">Save</button>
+                                <button type="submit" class="btn">Save</button>
                             </div>
                         </div>
                     </form>

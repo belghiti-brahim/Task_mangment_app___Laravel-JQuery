@@ -47,6 +47,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [ProjectController::class, 'destroy'])->name("deleteproject");
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name("editproject");
         Route::put('/update/{id}', [ProjectController::class, 'update'])->name("updateproject");
+        Route::get('/search', [ProjectController::class,'search'])->name("find");
 
     });
     Route::prefix('actions')->group(function () {
