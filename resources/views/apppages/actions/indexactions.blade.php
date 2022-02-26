@@ -1,14 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <x-jet-nav-link href="{{ route('createresponsability') }}"
-            :active="request()->routeIs('createresponsability')">
-            {{ __('Créer une résponsabilité') }}
+        <x-jet-nav-link href="{{ route('today') }}" :active="request()->routeIs('today')">
+            {{ __("Aujourd'hui") }}
         </x-jet-nav-link>
-        <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
-            {{ __('Créer un projet') }}
-        </x-jet-nav-link> --}}
+        <x-jet-nav-link href="{{ route('week') }}" :active="request()->routeIs('week')">
+            {{ __("cette semaine") }}
+        </x-jet-nav-link>
+        <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
+            {{ __('Toutes les actions') }}
+        </x-jet-nav-link> 
         <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
-            {{ __('Créer une action') }}
+            {{ __('Ajouter une action') }}
         </x-jet-nav-link>
     </x-slot>
 
@@ -37,7 +39,7 @@
                     @empty
                         <div
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                            <p class="modelTitle">tu n'a aucune action</p>
+                            <p class="modelTitle">tu n'as aucune action</p>
                         </div>
                     @endforelse
                 </div>

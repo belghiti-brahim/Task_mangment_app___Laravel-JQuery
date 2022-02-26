@@ -1,14 +1,17 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <x-jet-nav-link href="{{ route('createresponsability') }}"
-            :active="request()->routeIs('createresponsability')">
-            {{ __('Créer une résponsabilité') }}
+
+        <x-jet-nav-link href="{{ route('today') }}" :active="request()->routeIs('today')">
+            {{ __("Aujourd'hui") }}
         </x-jet-nav-link>
-        <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
-            {{ __('Créer un projet') }}
-        </x-jet-nav-link> --}}
+        <x-jet-nav-link href="{{ route('week') }}" :active="request()->routeIs('week')">
+            {{ __("cette semaine") }}
+        </x-jet-nav-link>
+        <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
+            {{ __('Toutes les actions') }}
+        </x-jet-nav-link> 
         <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
-            {{ __('Créer une action') }}
+            {{ __('Ajouter une action') }}
         </x-jet-nav-link>
     </x-slot>
 
@@ -20,17 +23,17 @@
     @endif
 
     <main class="relative min-h-screen">
-        <div class="px-10 relative md:fixed md:w-4/12 min-h-screen in flex items-center justify-content">
+        {{-- <div class="px-10 relative md:fixed md:w-4/12 min-h-screen in flex items-center justify-content">
             <div class="flex flex-col">
-                <h1 class="pageContentTitle">Pour réaliser le projet
-                    <span class="italic font-light">** {{ $project->name }} ** </span>
+                <h1 class="pageContentTitle">les actions du 
+                    <span class="italic font-light">** {{ $today }} ** </span>
                 </h1>
                 <p class="text-kramp-500">Les actions à effectuer à une date ou une heure spécifique vont dans le
                     Calendrier.
                 </p>
             </div>
-        </div>
-        <div class="md:w-8/12 ml-auto py-12">
+        </div> --}}
+        <div class="ml-auto py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="grid grid-cols-3 gap-6">
                     {{-- {{ dd($action->pivot)}} --}}
@@ -64,7 +67,7 @@
                         @empty
                             <div
                                 class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                                <p class="modelTitle">tu n'as aucune action</p>
+                                <p class="modelTitle">tu n'a aucune action</p>
                             </div>
                         @endforelse
                     </div>
@@ -97,7 +100,7 @@
                         @empty
                             <div
                                 class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                                <p class="modelTitle">tu n'as aucune action</p>
+                                <p class="modelTitle">tu n'a aucune action</p>
                             </div>
                         @endforelse
                     </div>
@@ -131,7 +134,7 @@
                         @empty
                             <div
                                 class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                                <p class="modelTitle">tu n'as aucune action</p>
+                                <p class="modelTitle">tu n'a aucune action</p>
                             </div>
                         @endforelse
                     </div>

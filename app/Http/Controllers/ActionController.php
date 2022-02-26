@@ -7,6 +7,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Models\Responsibility;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class ActionController extends Controller
 {
@@ -17,8 +19,45 @@ class ActionController extends Controller
      */
     public function index()
     {
+        $today = Carbon::today()->toFormattedDateString();
+        $weeknumber = Carbon::today()->week();
         $actions = Action::all();
-        return view('apppages.actions.indexactions', compact("actions"));
+        return view('apppages.actions.indexactions', compact("actions", "today"));
+    }
+    public function today()
+    {
+        $today = Carbon::today()->toDateString();
+        $allactions = Action::all();
+        $actions = $allactions->where('deadline', '=', $today);
+        return view('apppages.actions.todayaction', compact("actions", "today"));
+    }
+    public function week()
+    {
+        $today = Carbon::today();
+        $weeknumber = Carbon::today()->week();
+        // $actions = Action::select("*")
+        //     ->whereBetween(
+        //         'deadline',
+        //         [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
+        //     )->get();
+        $actions = Action::all();
+        $monday = $today->startOfWeek()->toDateString();
+        $tueasday = $today->addDay(1)->toDateString();
+        $wednesday = $today->addDay(1)->toDateString();
+        $thursday = $today->addDay(1)->toDateString();
+        $friday = $today->addDay(1)->toDateString();
+        $saturday = $today->addDay(1)->toDateString();
+        $sunday = $today->endOfWeek()->toDateString();
+        // dd($monday);
+        $mondayactions = $actions->where('deadline', '=', $monday);
+        $tueasdayactions = $actions->where('deadline', '=', $tueasday);
+        $wednesdayactions = $actions->where('deadline', '=', $wednesday);
+        $thursdayactions = $actions->where('deadline', '=', $thursday);
+        $fridayactions = $actions->where('deadline', '=', $friday);
+        $saturdayactions = $actions->where('deadline', '=', $saturday);
+        $sundayactions = $actions->where('deadline', '=', $sunday);
+        // dd($mondayactions);
+        return view('apppages.actions.weekactions', compact("actions", "mondayactions", "tueasdayactions", "wednesdayactions", "thursdayactions", "fridayactions", "saturdayactions", "sundayactions"));
     }
 
     /**
@@ -51,12 +90,12 @@ class ActionController extends Controller
             'deadline' => 'required'
         ]);
         $status = $request->status;
-
+        $deadline = carbon::parse($request->deadline)->format('Y-m-d');
         $newaction = Action::create([
             'description' => $request->description,
             'definition_of_done' => $request->defintionOfDone,
             'project_id' => $request->project,
-            'deadline' => $request->deadline,
+            'deadline' => $deadline
         ]);
 
 

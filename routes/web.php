@@ -35,8 +35,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [ResponsibilityController::class, 'destroy'])->name("deleteresponsibility");
         Route::get('/edit/{id}', [ResponsibilityController::class, 'edit'])->name("editresponsibility");
         Route::put('/update/{id}', [ResponsibilityController::class, 'update'])->name("updateresponsibility");
-
-
     });
 
     Route::prefix('project')->group(function () {
@@ -47,9 +45,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [ProjectController::class, 'destroy'])->name("deleteproject");
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name("editproject");
         Route::put('/update/{id}', [ProjectController::class, 'update'])->name("updateproject");
-        Route::get('/search', [ProjectController::class,'search'])->name("find");
-
+        Route::get('/search', [ProjectController::class, 'search'])->name("find");
     });
+
     Route::prefix('actions')->group(function () {
         Route::get('/create', [ActionController::class, "create"])->name('creataction');
         Route::get('/index', [ActionController::class, "index"])->name("indexactions");
@@ -57,6 +55,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [ActionController::class, 'destroy'])->name("deleteaction");
         Route::get('/edit/{id}', [ActionController::class, 'edit'])->name("editaction");
         Route::put('/update/{id}', [ActionController::class, 'update'])->name("updateaction");
-
+        Route::get('/aujourdhui', [ActionController::class, 'today'])->name("today");
+        Route::get('/semaine', [ActionController::class, 'week'])->name("week");
     });
 });
