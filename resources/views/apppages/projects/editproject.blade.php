@@ -61,7 +61,7 @@
                                 </div>
 
                                 <div>
-                                    <label for="about" class="block text-sm font-medium text-gray-700"> déscription
+                                    <label for="about" class="block text-sm font-medium text-gray-700">Une description
                                         courte </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="description" rows="3"
@@ -70,7 +70,7 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="color" class="block text-sm font-medium text-gray-700">responsabilité
+                                    <label for="color" class="block text-sm font-medium text-gray-700">Responsabilité
                                     </label>
                                     <select id="color" name="responsibility" autocomplete="color-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
@@ -85,7 +85,7 @@
                                     </select>
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="project" class="block text-sm font-medium text-gray-700">ce projet est
+                                    <label for="project" class="block text-sm font-medium text-gray-700">Ce projet est
                                         le sous projet de</label>
                                     <select id="project" name="project" autocomplete="project-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">

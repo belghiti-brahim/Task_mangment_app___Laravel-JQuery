@@ -20,8 +20,9 @@
             x-show="show" x-init="setTimeout(() => show = false, 1500)">
             <p>{{ session('message') }}</p>
         </div>
-    @endif
-
+     @endif
+     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
+    </div>
     <main class="relative min-h-screen">
         {{-- <div class="px-10 relative md:fixed md:w-4/12 min-h-screen in flex items-center justify-content">
             <div class="flex flex-col">

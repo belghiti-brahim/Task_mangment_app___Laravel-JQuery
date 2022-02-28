@@ -199,6 +199,6 @@ class ActionController extends Controller
     {
         $action = Action::find($id);
         $action->delete();
-        return response()->json(['success' => "la responsibilité a été suprimé avec success"]);
+        return response()->json(['success' => "l'action a été supprimée avec succéss"]);
     }
 }

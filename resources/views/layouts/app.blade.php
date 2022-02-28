@@ -61,8 +61,13 @@
                         _token: $("input[name=_token]").val()
                     },
                     success: function(response) {
-                        console.log(response);
+                        console.log(response.success);
+                        var message = response;
                         $("#action" + id).remove();
+                        $("#deletemessage").append(response.success).show().fadeOut( 3000, "linear");
+                   
+                        // $("#deletemessage").toggle("<p>response</p>");
+
                         
                     }
 
@@ -82,6 +87,8 @@
                     success: function(response) {
                         console.log(response);
                         $("#res" + id).remove();
+                        $("#deletemessage").append(response.success).show().fadeOut( 3000, "linear");
+
                     }
                 })
             }
@@ -100,6 +107,8 @@
                     success: function(response) {
                         console.log(response);
                         $("#project" + id).remove();
+                        $("#deletemessage").append(response.success).show().fadeOut( 3000, "linear");
+
                     }
                 })
             }

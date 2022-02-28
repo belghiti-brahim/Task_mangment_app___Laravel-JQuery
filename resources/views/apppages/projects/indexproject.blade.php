@@ -11,12 +11,13 @@
             {{ __('Créer une action') }}
         </x-jet-nav-link> --}}
     </x-slot>
-
+    <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
+    </div>
 
     <main class="relative min-h-screen">
         <form action="{{ route('find') }}" method="GET">
             @csrf
-            <div class="px-4 py-3 flex flex-row items-end">
+            <div class="px-12 py-3 flex flex-row items-end">
                 <div class="sm:p-6">
                     <div class="">
                         <div class="">
@@ -38,7 +39,7 @@
         </form>
         <div class="ml-auto py-5">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="grid grid-cols-3 gap-6">
+                <div class="grid sm:grid-col-1 lg:grid-cols-3 gap-6">
                     @forelse ($projects as $project)
                         <div id="project{{ $project->id }}"
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">

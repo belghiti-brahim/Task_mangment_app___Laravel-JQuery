@@ -133,6 +133,6 @@ class ResponsibilityController extends Controller
     {
         $responsibility = Responsibility::find($id);
         $responsibility->delete();
-        return response()->json(['success' => "la responsibilité a été suprimé avec success"]);
+        return response()->json(['success' => "la responsibilité a été suprimée avec succèss"]);
     }
 }

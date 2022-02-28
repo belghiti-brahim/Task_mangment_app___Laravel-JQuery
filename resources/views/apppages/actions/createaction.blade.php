@@ -17,16 +17,16 @@
                         @csrf
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                                @if ($errors->any())
+                                    <div class="bg-red-600 text-white">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>* {{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="grid grid-cols-3 gap-6">
-                                    @if ($errors->any())
-                                        <div class="bg-red-600 text-white">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
                                     <div class="col-span-3 sm:col-span-2">
                                         <label for="actionId" class="block text-sm font-medium text-gray-700">
                                             Déscription de l'action
@@ -42,7 +42,7 @@
                                 </div>
 
                                 <div>
-                                    <label for="about" class="block text-sm font-medium text-gray-700"> definition of
+                                    <label for="about" class="block text-sm font-medium text-gray-700"> Définition of
                                         done </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="defintionOfDone" rows="3"
@@ -79,7 +79,7 @@
                                     x-ref="datetimewidget"
                                     class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
                                     <label for="datetime"
-                                        class="flex-grow  block font-medium text-sm text-gray-700 mb-1">date d'échéance
+                                        class="flex-grow  block font-medium text-sm text-gray-700 mb-1">Date d'échéance
                                         de l'action </label>
                                     <div class="flex align-middle align-content-center">
                                         <input x-ref="datetime" type="text" id="datetime" data-input name="deadline"

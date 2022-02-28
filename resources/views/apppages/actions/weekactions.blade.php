@@ -13,7 +13,9 @@
             {{ __('Ajouter une action') }}
         </x-jet-nav-link>
     </x-slot>
-
+    
+    <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
+    </div>
 
     <main class="relative min-h-screen">
         <div class="ml-auto py-12  flex flex-col items-center justify-center gap-8 ">

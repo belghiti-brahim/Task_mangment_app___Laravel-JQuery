@@ -171,6 +171,6 @@ class ProjectController extends Controller
         if ($project) {
             $project->delete();
         }
-        return response()->json(['success' => "le projet a été suprimé avec success"]);
+        return response()->json(['success' => "le projet a été supprimé avec sucèss"]);
     }
 }

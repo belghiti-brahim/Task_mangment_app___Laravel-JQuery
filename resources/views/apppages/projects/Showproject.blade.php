@@ -18,9 +18,8 @@
             <p>{{ session('message') }}</p>
         </div>
     @endif
-    {{-- <div class="flex items-center bg-red-500 text-white text-sm font-bold px-4 py-3">
-   
-</div> --}}
+    <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
+    </div>
 
 
     <main class="relative min-h-screen">
@@ -35,7 +34,7 @@
             </div>
         </div>
         <div class="md:w-8/12 ml-auto py-12">
-            <div id="collection"  class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div id="collection" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="grid grid-cols-3 gap-6">
                     <div class="col-start-1 flex flex-col gap-y-4">
                         <h3 class="font-bold text-xl">TODO</h3>

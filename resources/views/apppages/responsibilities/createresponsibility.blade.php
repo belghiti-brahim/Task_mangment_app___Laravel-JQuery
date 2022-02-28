@@ -34,17 +34,17 @@
                         @csrf
                         <div class="shadow sm:rounded-md sm:overflow-hidden">
                             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                                @if ($errors->any())
+                                <div class="bg-red-600 text-white">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>* {{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <div class="grid grid-cols-3 gap-6">
-                                    @if ($errors->any())
-                                        <div class="bg-red-600 text-white">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
-                                    <div class="col-span-3 sm:col-span-2">
+                                                                      <div class="col-span-3 sm:col-span-2">
                                         <label for="resonsibilityId" class="block text-sm font-medium text-gray-700">
                                             Le nom de la résponsabilité
                                         </label>
@@ -60,7 +60,7 @@
                                 </div>
 
                                 <div>
-                                    <label for="about" class="block text-sm font-medium text-gray-700"> description
+                                    <label for="about" class="block text-sm font-medium text-gray-700"> Une description
                                         courte </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="description" rows="3"
