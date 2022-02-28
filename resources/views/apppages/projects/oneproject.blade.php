@@ -55,7 +55,7 @@
                             <a href="{{ route('showproject', $project->id) }}">
                                 <p class="">{{ $project->name }} </p>
                             </a>
-                            <div class="flex flex-row">
+                            <div class="flex flex-row gap-1">
                                 <a href="{{ route('editproject', $project->id) }}"
                                     class="w-6 h-6 hover:w-8 hover:h-8"> <img src="{{ asset('images/edit.png') }}"
                                         alt="editbutton">

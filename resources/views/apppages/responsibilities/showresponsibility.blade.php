@@ -23,40 +23,38 @@
                 <h1 class="pageContentTitle">Autant que **
                     <span class="font-light">{{ $responsibility->name }} </span> ** Je m'engage à réaliser:
                 </h1>
-                <p class="text-kramp-500">un projet est tout ce que nous voulons faire qui nécessite plus d'une étape
+                <p class="text-kramp-500">Un projet est tout ce que nous voulons faire qui nécessite plus d'une étape
                     d'action . C'est donc un mécanisme pour se rappeler que, lorsque nous aurons terminé cette
-                    première
-                    étape d'action, il y aura encore quelque chose à faire.
+                    première étape d'action, il y aura encore quelque chose à faire.
                 </p>
             </div>
         </div>
         <div class="md:w-3/5 ml-auto py-12">
 
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="grid grid-cols-2 gap-6">
+                <div class=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     @forelse ($projects as $project)
                         <div id="project{{ $project->id }}"
-                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-52 flex flex-col items-start justify-around">
-                            <div class="flex flex-col h-40  gap-y-2">
+                            class="outline outline-orange-100 px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
+                            <div class="flex flex-col gap-y-3">
                                 <a class="h-full w-full" href="{{ route('showproject', $project->id) }}">
                                     <p class="w-full hover:text-3xl font-bold">{{ $project->name }} </p>
                                 </a>
                                 <div class="flex flex-row">
                                     <a href="{{ route('editproject', $project->id) }}"
-                                        class="w-6 h-6 hover:w-8 hover:h-8"> <img
-                                            src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                        class="w-6 h-6 hover:w-8 hover:h-8"> <img src="{{ asset('images/edit.png') }}"
+                                            alt="editbutton">
                                     </a>
                                     <a href="javascript:void(0)" onclick="deleteProject({{ $project->id }})"
                                         class="w-6 h-6 hover:w-8 hover:h-8"> <img
                                             src="{{ asset('images/delete.png') }}" alt="deltebutton">
                                     </a>
                                 </div>
-
                                 @forelse($project->children as $subproject)
                                     <div
-                                        class="bg-gray-200 overflow-hidden shadow-xl sm:rounded-lg w-64 h-24 flex flex-row items-center justify-around">
+                                        class="bg-gray-200 shadow-xl sm:rounded-lg w-68 h-full min flex flex-row items-start justify-around">
                                         <a href="{{ route('showproject', $subproject->id) }}">
-                                            <p class="hover:text-2xl font-bold">{{ $subproject->name }} </p>
+                                            <p class="hover:text-1xl font-meduim">{{ $subproject->name }} </p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="{{ route('editproject', $subproject->id) }}"
@@ -77,7 +75,7 @@
                     @empty
                         <div
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                            <p class="modelTitle">tu n'a aucun projet</p>
+                            <p class="modelTitle">tu n'as aucun projet</p>
                         </div>
                     @endforelse
                 </div>

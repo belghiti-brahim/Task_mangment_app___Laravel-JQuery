@@ -38,7 +38,7 @@ class ProjectController extends Controller
         $authid= Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         // $responsibilities = Responsibility::all();
-        $projects = Project::all();
+        $projects = Project::where("project_id", "=", null)->get();
         return view("apppages.projects.createproject", compact("responsibilities", "projects"));
     }
 
@@ -113,8 +113,9 @@ class ProjectController extends Controller
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $oldresponsibility = Responsibility::where("id", "=", "$project_id")->get();
         // dd($oldresponsibility);
-       
-        $projects = Project::all();
+    //    $parent = $project->with("parent")->get();
+    //    dd($parent);
+        $projects = Project::where("project_id", "=", null)->get();
         return view("apppages.projects.editproject", compact("responsibilities", "project", "projects", "oldresponsibility"));
     }
 

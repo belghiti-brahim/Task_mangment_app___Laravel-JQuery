@@ -21,7 +21,7 @@ class Project extends Model
     }
     public function parent()
 {
-    return $this->belongsTo(Project::class,'project_id')->where('project_id',0)->with('parent');
+    return $this->belongsTo(Project::class,'project_id')->where('project_id',null)->with('parent');
 }
 
 public function children()

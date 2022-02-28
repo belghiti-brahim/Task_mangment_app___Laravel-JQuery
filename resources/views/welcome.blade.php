@@ -57,17 +57,17 @@
             <div class="container mx-auto flex flex-col items-start gap-y-8 py-12 sm:py-24">
                 <div class=" lg:flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">
                     <h1 class="hierarchyl1">
-                        Libérez votre espace mental<br>
+                        Libérez votre espace mental.<br>
                         Organisez-vous efficacement,
                         <br>sans stress.
                     </h1>
 
                     <p class="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-left text-sm sm:text-lg">
-                        Avec la solution digital "clarté".<br>  Ayez l'esprit tranquille en ajoutant toutes <br> vos tâches à votre to-do list</p>
+                        Avec la solution digitale "clarté".<br>  Ayez l'esprit tranquille en ajoutant toutes <br> vos tâches à votre nouvelle to-do list application préférée.</p>
                 </div>
                 <div class="flex justify-center items-start">
                     <a href="{{ route('register') }}"
-                        class="bg-sky-600 hover:bg-sky-700 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 py-2 sm:py-4 text-sm">rejoignez-nous</a>
+                        class="bg-sky-600 hover:bg-sky-700 lg:text-xl lg:font-bold  rounded text-white px-4 sm:px-10 py-2 sm:py-4 text-sm">Rejoignez-nous</a>
                 </div>
             </div>
         </section>
@@ -76,7 +76,7 @@
             <div>
                 <div role="contentinfo" class="flex items-center flex-col px-4">
                     <h1 tabindex="0" class="hierarchyl1">
-                        L'application qui vous touche
+                        L'application qui vous aide
                     </h1>
                 </div>
                 <div tabindex="0" aria-label="group of cards"

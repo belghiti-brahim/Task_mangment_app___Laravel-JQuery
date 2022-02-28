@@ -57,5 +57,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::put('/update/{id}', [ActionController::class, 'update'])->name("updateaction");
         Route::get('/aujourdhui', [ActionController::class, 'today'])->name("today");
         Route::get('/semaine', [ActionController::class, 'week'])->name("week");
+        Route::get('/startaction/{id}', [ActionController::class, 'changeActionStatusToDoing'])->name("startaction");
+        Route::get('/doneaction/{id}', [ActionController::class, 'changeActionStatusToDone'])->name("doneaction");
     });
 });

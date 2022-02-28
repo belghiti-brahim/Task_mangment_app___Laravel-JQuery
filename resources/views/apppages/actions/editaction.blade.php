@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-     
+
 
     </x-slot>
     <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -38,7 +38,7 @@
                                                 faire: </span>
                                             <input type="text" name="description" id="actionId"
                                                 class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                                value="{{ old('description', $action->description)}}">
+                                                value="{{ old('description', $action->description) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -48,8 +48,7 @@
                                         done </label>
                                     <div class="mt-1">
                                         <textarea id="about" name="defintionOfDone" rows="3"
-                                            class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                            >{{ old('defintionOfDone', $action->definition_of_done)}}</textarea>
+                                            class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md">{{ old('defintionOfDone', $action->definition_of_done) }}</textarea>
                                     </div>
                                 </div>
 
@@ -57,7 +56,8 @@
                                     <label for="project" class="block text-sm font-medium text-gray-700">Projet</label>
                                     <select id="project" name="project" autocomplete="color-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
-                                        <option value={{ $action->project->id }}>{{  old('project', $action->project->name) }}</option>
+                                        <option value={{ $action->project->id }}>
+                                            {{ old('project', $action->project->name) }}</option>
                                         @forelse ($projects as $project)
                                             <option value={{ $project->id }}>{{ $project->name }}</option>
 
@@ -78,7 +78,7 @@
                                     </select>
                                 </div>
                                 <div x-data
-                                    x-init="flatpickr($refs.datetimewidget, {wrap: true, enableTime: true, dateFormat: 'M j, Y h:i K'});"
+                                    x-init="flatpickr($refs.datetimewidget, {wrap: true, enableTime: false, dateFormat: 'Y-m-d'});"
                                     x-ref="datetimewidget"
                                     class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
                                     <label for="datetime"
@@ -86,7 +86,7 @@
                                         de l'action </label>
                                     <div class="flex align-middle align-content-center">
                                         <input x-ref="datetime" type="text" id="datetime" data-input name="deadline"
-                                            placeholder="Select.." value="{{ old('deadline', $action->deadline)}}"
+                                            placeholder="Select.." value="{{ old('deadline', $action->deadline) }}"
                                             class="block w-full px-2 border-gray-300 focus:border-sky-300 focus:ring focus:ring-sky-200 focus:ring-opacity-50 rounded-l-md shadow-sm">
 
                                         <a class="h-11 w-10 input-button cursor-pointer rounded-r-md bg-transparent border-gray-300 border-t border-b border-r"

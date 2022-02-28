@@ -16,7 +16,7 @@
         <div class="px-10 relative md:fixed md:w-2/5 min-h-screen in flex items-center justify-content">
             <div class="flex flex-col">
                 <h1 class="pageContentTitle">Je suis</h1>
-                <p class="text-kramp-500">différents aspects de mon travail et de ma vie personnelle auxquels je souhaite
+                <p class="text-kramp-500">Les différents aspects de mon travail et de ma vie personnelle auxquels je souhaite
                     consacrer
                     mon temps de manière équilibrée, en espérant obtenir de bons résultats dans chacun d'eux .</p>
             </div>
@@ -48,7 +48,7 @@
                     @empty
                         <div
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                            <p class="modelTitle">tu n'a aucune responsabilité</p>
+                            <p class="modelTitle">tu n'as aucune responsabilité</p>
                         </div>
                     @endforelse
                 </div>

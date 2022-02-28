@@ -90,18 +90,41 @@ class ActionController extends Controller
             'deadline' => 'required'
         ]);
         $status = $request->status;
-        $deadline = carbon::parse($request->deadline)->format('Y-m-d');
+        // $deadline = carbon::parse($request->deadline)->format('Y-m-d');
         $newaction = Action::create([
             'description' => $request->description,
             'definition_of_done' => $request->defintionOfDone,
             'project_id' => $request->project,
-            'deadline' => $deadline
+            'deadline' => $request->deadline,
         ]);
-
 
         $newaction->contexts()->attach($status);
         $projectid = $request->project;
         return redirect()->route('showproject',  $projectid)->with('message', 'ton action a été créée avec succès');
+    }
+
+    public function changeActionStatusToDoing($id)
+    {
+        $action = Action::find($id);
+        // $actionwithcontext = $action->contexts()->get();
+        // foreach ($actionwithcontext as $context){
+        //    $context->pivot->context_id = 2;
+        // }
+        $status = 2;
+        $action->contexts()->sync($status);
+
+
+        // $actioncontext = $actionwithcontext->pivot()->context_id;
+        return response()->json(['success' => "done"]);
+    }
+
+    public function changeActionStatusToDone($id)
+    {
+        $action = Action::find($id);
+        $status = 3;
+        $action->contexts()->sync($status);
+
+        return response()->json(['success' => "done"]);
     }
 
     /**

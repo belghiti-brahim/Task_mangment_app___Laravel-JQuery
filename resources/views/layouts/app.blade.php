@@ -19,7 +19,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/flatpickr.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/themes/airbnb.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.9/themes/material_blue.min.css">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
 
@@ -53,7 +53,7 @@
         function deleteAction(id) {
             if (confirm("voulez-vous vraiment supprimer cette action?")) {
                 var main_url = "http://127.0.0.1:8000";
-                var referrer =  "http://127.0.0.1:8000/actions/delete/" + id; 
+                var referrer = "http://127.0.0.1:8000/actions/delete/" + id;
                 $.ajax({
                     url: referrer,
                     type: 'DELETE',
@@ -63,6 +63,7 @@
                     success: function(response) {
                         console.log(response);
                         $("#action" + id).remove();
+                        
                     }
 
                 })
@@ -89,7 +90,7 @@
         function deleteProject(id) {
             if (confirm("voulez-vous vraiment supprimer ce projet?")) {
                 var main_url = "http://127.0.0.1:8000";
-                var referrer =  "http://127.0.0.1:8000/project/delete/" + id; 
+                var referrer = "http://127.0.0.1:8000/project/delete/" + id;
                 $.ajax({
                     url: referrer,
                     type: 'DELETE',
@@ -102,6 +103,65 @@
                     }
                 })
             }
+        }
+
+        function startAction(id) {
+
+            var token = $("meta[name='csrf-token']").attr("content");
+            var main_url = "http://127.0.0.1:8000";
+            var referrer = "http://127.0.0.1:8000/actions/startaction/" + id;
+            $.ajax({
+                url: referrer,
+                type: 'GET',
+                dataType: "json",
+                data: {
+                    "id": id,
+                    "_token": token,
+                },
+                success: function(response) {
+                    $("#collection").load(location.href + " #collection");
+                    $("#collectionl").load(location.href + " #collectionl");
+                    $("#collectionm").load(location.href + " #collectionm");
+                    $("#collectionme").load(location.href + " #collectionme");
+                    $("#collectionj").load(location.href + " #collectionj");
+                    $("#collectionv").load(location.href + " #collectionv");
+                    $("#collections").load(location.href + " #collections");
+                    $("#collectiond").load(location.href + " #collectiond");
+
+
+
+                    // location.reload(true);
+                }
+
+            })
+        }
+
+        function doneAction(id) {
+
+            var token = $("meta[name='csrf-token']").attr("content");
+            var main_url = "http://127.0.0.1:8000";
+            var referrer = "http://127.0.0.1:8000/actions/doneaction/" + id;
+            $.ajax({
+                url: referrer,
+                type: 'GET',
+                dataType: "json",
+                data: {
+                    "id": id,
+                    "_token": token,
+                },
+                success: function(response) {
+                    // location.reload(true);
+                    $("#collection").load(location.href + " #collection");
+                    $("#collectionl").load(location.href + " #collectionl");
+                    $("#collectionm").load(location.href + " #collectionm");
+                    $("#collectionme").load(location.href + " #collectionme");
+                    $("#collectionj").load(location.href + " #collectionj");
+                    $("#collectionv").load(location.href + " #collectionv");
+                    $("#collections").load(location.href + " #collections");
+                    $("#collectiond").load(location.href + " #collectiond");
+                }
+
+            })
         }
     </script>
 </body>
