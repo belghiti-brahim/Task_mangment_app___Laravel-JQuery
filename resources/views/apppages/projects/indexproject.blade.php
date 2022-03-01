@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        {{ $projects->links('pagination::simple-tailwind') }}
+        {{ $responsibilities->links('pagination::simple-tailwind') }}
 
     </main>
 

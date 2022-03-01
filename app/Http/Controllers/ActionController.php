@@ -28,8 +28,18 @@ class ActionController extends Controller
     {
         $today = Carbon::today()->toDateString();
         $allactions = Action::all();
-        $actions = $allactions->where('deadline', '=', $today);
-        return view('apppages.actions.todayaction', compact("actions", "today"));
+        $authid = Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(6);
+        foreach ($responsibilities as $responsibility) {
+            $projects =  $responsibility->projects;
+            // foreach($projects as $project){
+            //     $actions = $project->actions->where('deadline', '=', $today);
+            //     // dd($actions);
+            // }
+        };
+
+        // $actions = $allactions->where('deadline', '=', $today);
+        return view('apppages.actions.todayaction', compact("projects", "today"));
     }
     public function week()
     {
@@ -67,9 +77,13 @@ class ActionController extends Controller
      */
     public function create()
     {
+        // $authid = Auth::user()->id;
+        // $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
-        $projects = Project::all();
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
+        foreach ($responsibilities as $responsibility) {
+            $projects =  $responsibility->projects;
+        };
         return view("apppages.actions.createaction", compact("projects"));
     }
 
@@ -146,9 +160,12 @@ class ActionController extends Controller
      */
     public function edit($id)
     {
+     
         $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
-        $projects = Project::all();
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
+        foreach ($responsibilities as $responsibility) {
+            $projects =  $responsibility->projects;
+        };
         $action = Action::find($id);
         return view("apppages.actions.editaction", compact("projects", 'action'));
     }

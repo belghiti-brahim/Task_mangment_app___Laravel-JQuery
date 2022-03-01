@@ -37,7 +37,7 @@
             <div id="collection" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="grid grid-cols-3 gap-6">
                     <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
+                        <h3 class="text-xl">À faire</h3>
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
@@ -65,13 +65,13 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                                <p class="modelTitle">tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="hierarchyl2">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                     <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
+                        <h3 class="text-xl">En cours</h3>
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 2)
@@ -99,13 +99,13 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                                <p class="modelTitle">tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="hierarchyl2">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                     <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
+                        <h3 class="text-xl">Fait</h3>
 
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
@@ -130,8 +130,8 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
-                                <p class="modelTitle">tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="hierarchyl2">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>

@@ -17,6 +17,9 @@
 .hierarchyl2{
     @apply font-Catamaran text-left font-extrabold text-gray-700 text-2xl;
 }
+.hierarchyl3{
+    @apply font-Catamaran text-left font-bold text-orange-400 text-2xl;
+}
 .pageContentTitle{
     @apply font-Catamaran text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl text-left text-orange-400 font-extrabold leading-10 md:leading-10;
 }

@@ -13,25 +13,25 @@
             {{ __('Ajouter une action') }}
         </x-jet-nav-link>
     </x-slot>
-    
+
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
 
-    <main class="relative min-h-screen">
-        <div class="ml-auto py-12  flex flex-col items-center justify-center gap-8 ">
+    <main class="w-full min-h-screen flex justify-center ">
+        <div class="min-w-full py-12 grid grid-cols-7 items-start gap-8 ">
             {{-- lundi --}}
-            <div id="collectionl" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Lundi</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
+            <div id="collectionl" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                <h1 class="hierarchyl3">Lundi</h1>
+                <div class="grid grid-col-1 gap-4">
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">À faire</h3>
                         @forelse ($mondayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
                                     <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                         <a href="">
-                                            <p class="">{{ $action->description }}</p>
+                                            <p class="text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
@@ -52,55 +52,20 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($mondayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
-                                            </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
-
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">Fait</h3>
                         @forelse ($mondayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
+                                            <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="{{ route('editaction', $action->id) }}" onclick=""
@@ -117,26 +82,26 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                 </div>
             </div>
             {{-- mardi --}}
-            <div id="collectionm" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Mardi</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
+            <div id="collectionm" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                <h1 class="hierarchyl3">Mardi</h1>
+                <div class="grid grid-col-1 gap-4">
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">À faire</h3>
                         @forelse ($tueasdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="">{{ $action->description }}</p>
+                                            <p class="text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
@@ -157,47 +122,13 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($tueasdayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
-                                            </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">Fait</h3>
 
                         @forelse ($tueasdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
@@ -205,7 +136,7 @@
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
+                                            <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
@@ -225,26 +156,26 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                 </div>
             </div>
             {{-- mercredi --}}
-            <div id="collectionme" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Mercredi</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
+            <div id="collectionme" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                <h1 class="hierarchyl3">Mercredi</h1>
+                <div class="grid grid-col-1 gap-14">
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">À faire</h3>
                         @forelse ($wednesdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="">{{ $action->description }}</p>
+                                            <p class="text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
@@ -265,55 +196,20 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($wednesdayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
-                                            </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
-
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">Fait</h3>
                         @forelse ($wednesdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
+                                            <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
@@ -333,26 +229,26 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                 </div>
             </div>
             {{-- jeudi --}}
-            <div id="collectionj" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Jeudi</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
+            <div id="collectionj" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                <h1 class="hierarchyl3">Jeudi</h1>
+                <div class="grid grid-col-1 gap-14">
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">À faire</h3>
                         @forelse ($thursdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="">{{ $action->description }}</p>
+                                            <p class="text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
@@ -373,47 +269,13 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($thursdayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
-                                            </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">Fait</h3>
 
                         @forelse ($thursdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
@@ -421,7 +283,7 @@
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
+                                            <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
@@ -441,26 +303,26 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                 </div>
             </div>
             {{-- vendredi --}}
-            <div id="collectionv" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Vendredi</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
+            <div id="collectionv" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                <h1 class="hierarchyl3">Vendredi</h1>
+                <div class="grid grid-col-1 gap-14">
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">À faire</h3>
                         @forelse ($fridayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="">{{ $action->description }}</p>
+                                            <p class="text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
@@ -481,55 +343,20 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($fridayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
-                                            </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
-
+                    <div class="flex flex-col gap-y-4">
+                        <h3 class="text-base font-semibold">Fait</h3>
                         @forelse ($fridayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
                                     <div id="action{{ $action->id }}"
                                         class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
+                                            <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="{{ route('editaction', $action->id) }}" onclick=""
@@ -546,221 +373,157 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
                     </div>
                 </div>
             </div>
-            {{-- samedi --}}
-            <div id="collections" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Samedi</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
-                        @forelse ($saturdayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/start.png') }}"
-                                                    alt="start action button">
+            {{-- samedi et dimanche --}}
+            <div class="flex flex-col gap-8">
+                <div id="collections" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                    <h1 class="hierarchyl3">Samedi</h1>
+                    <div class="grid grid-col-1 gap-4">
+                        <div class="flex flex-col gap-y-4">
+                            <h3 class="text-base font-semibold">À faire</h3>
+                            @forelse ($saturdayactions as $action)
+                                @foreach ($action->contexts as $contextaction)
+                                    @if ($contextaction->pivot->context_id == 1)
+                                        <div id="action{{ $action->id }}"
+                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                            <a href="">
+                                                <p class="text-sm">{{ $action->description }}</p>
                                             </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
+                                            <div class="flex flex-row">
+                                                <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
+                                                    class="w-4 h-4 hover:w-6 hover:h-6">
+                                                    <img src="{{ asset('images/start.png') }}"
+                                                        alt="start action button">
+                                                </a>
+                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                    class="w-4 h-4 hover:w-8 hover:h-8">
+                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    onclick="deleteAction({{ $action->id }})"
+                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($saturdayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
+                                    @endif
+                                @endforeach
+                            @empty
+                                <div
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <p class="text-sm">tu n'as aucune action</p>
+                                </div>
+                            @endforelse
+                        </div>
+                        <div class="flex flex-col gap-y-4">
+                            <h3 class="text-base font-semibold">Fait</h3>
+                            @forelse ($saturdayactions as $action)
+                                @foreach ($action->contexts as $contextaction)
+                                    @if ($contextaction->pivot->context_id == 3)
+                                        <div id="action{{ $action->id }}"
+                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                            <a href="">
+                                                <p class="line-through text-sm">{{ $action->description }}</p>
                                             </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
+                                            <div class="flex flex-row">
+                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                    class="w-4 h-4 hover:w-8 hover:h-8">
+                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    onclick="deleteAction({{ $action->id }})"
+                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
-
-                        @forelse ($saturdayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
+                                    @endif
+                                @endforeach
+                            @empty
+                                <div
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <p class="text-sm">tu n'as aucune action</p>
+                                </div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
-            </div>
-            {{-- dimanche --}}
-            <div id="collectiond" class="w-full mx-auto sm:px-6 lg:px-8 flex flex-col gap-4">
-                <h1 class="hierarchyl1">Dimanche</h1>
-                <div class="grid grid-cols-3 gap-14">
-                    <div class="col-start-1 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">TODO</h3>
-                        @forelse ($sundayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/start.png') }}"
-                                                    alt="start action button">
+                <div id="collectiond" class="sm:px-6 lg:px-8 flex flex-col gap-4">
+                    <h1 class="hierarchyl3">Dimanche</h1>
+                    <div class="grid grid-col-1 gap-4">
+                        <div class="flex flex-col gap-y-4">
+                            <h3 class="text-base font-semibold">À faire</h3>
+                            @forelse ($sundayactions as $action)
+                                @foreach ($action->contexts as $contextaction)
+                                    @if ($contextaction->pivot->context_id == 1)
+                                        <div id="action{{ $action->id }}"
+                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-start justify-between">
+                                            <a href="">
+                                                <p class="text-sm">{{ $action->description }}</p>
                                             </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
+                                            <div class="flex flex-row">
+                                                <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
+                                                    class="w-4 h-4 hover:w-6 hover:h-6">
+                                                    <img src="{{ asset('images/start.png') }}"
+                                                        alt="start action button">
+                                                </a>
+                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                    class="w-4 h-4 hover:w-8 hover:h-8">
+                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    onclick="deleteAction({{ $action->id }})"
+                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl">DOING</h3>
-                        @forelse ($sundayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6">
-                                                <img src="{{ asset('images/done.png') }}" alt="done button">
+                                    @endif
+                                @endforeach
+                            @empty
+                                <div
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <p class="text-sm">tu n'as aucune action</p>
+                                </div>
+                            @endforelse
+                        </div>
+                        <div class="flex flex-col gap-y-4">
+                            <h3 class="text-base font-semibold">Fait</h3>
+                            @forelse ($sundayactions as $action)
+                                @foreach ($action->contexts as $contextaction)
+                                    @if ($contextaction->pivot->context_id == 3)
+                                        <div id="action{{ $action->id }}"
+                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                            <a href="">
+                                                <p class="line-through text-sm">{{ $action->description }}</p>
                                             </a>
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
+                                            <div class="flex flex-row">
+                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                    class="w-4 h-4 hover:w-8 hover:h-8">
+                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                </a>
+                                                <a href="javascript:void(0)"
+                                                    onclick="deleteAction({{ $action->id }})"
+                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
-                    </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
-                        <h3 class="font-bold text-xl"> DONE</h3>
-                        @forelse ($sundayactions as $action)
-                            @foreach ($action->contexts as $contextaction)
-                                @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                        <a href="">
-                                            <p class="line-through">{{ $action->description }}</p>
-                                        </a>
-                                        <div class="flex flex-row">
-                                            <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                class="w-4 h-4 hover:w-8 hover:h-8">
-                                                <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                            </a>
-                                            <a href="javascript:void(0)" onclick="deleteAction({{ $action->id }})"
-                                                class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                    src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @empty
-                            <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-8 flex flex-row items-center justify-between">
-                                <p>tu n'as aucune action</p>
-                            </div>
-                        @endforelse
+                                    @endif
+                                @endforeach
+                            @empty
+                                <div
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <p class="text-sm">tu n'as aucune action</p>
+                                </div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>

@@ -99,14 +99,23 @@
                                         {{-- <option selected>Open this select menu</option> --}}
                                         <option value="">none
                                         </option>
-                                        @forelse ($projects as $project)
-                                        
+                                        @forelse ($responsibilities as $responsibility)
+                                                @forelse ($responsibility->projects as $project)
+                                                @if($project->project_id != null){
+                                                    <option class="hidden" value={{ $project->id }}>{{ $project->name }}
+
+                                                }
+                                                @else{
                                             <option value={{ $project->id }}>{{ $project->name }}
                                             </option>
+                                            }
+                                            @endif
 
                                             @empty 
                                             <option>tu n'a aucun projet creé.</option>
 
+                                        @endforelse
+                                        @empty
                                         @endforelse
                                     </select>
 
