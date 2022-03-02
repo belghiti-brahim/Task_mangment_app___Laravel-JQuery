@@ -37,6 +37,28 @@ class ProjectController extends Controller
         return view('apppages.projects.oneproject', compact("projects"));
     }
 
+    public function archive($id)
+    {
+
+        $project = Project::find($id);
+        if ($project->archive === 1) {
+            $project->archive = 0;
+            $project->save();
+        } else {
+            $project->archive = 1;
+            $project->save();
+        }
+
+        return response()->json(['success' => "le projet a été archivé avec sucèss"]);
+    }
+
+    public function archived()
+    {
+        $authid = Auth::user()->id;
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
+        return view('apppages.projects.archiveproject', compact("responsibilities"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

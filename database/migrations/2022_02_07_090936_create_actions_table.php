@@ -17,7 +17,6 @@ class CreateActionsTable extends Migration
             $table->id();
             $table->string("description");
             $table->string("definition_of_done");
-            $table->boolean('is_done')->default(false);
             $table->string("deadline");
             $table->foreignId("project_id")->constrained("projects")->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

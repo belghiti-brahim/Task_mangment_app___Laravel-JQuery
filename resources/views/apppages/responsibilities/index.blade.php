@@ -31,7 +31,7 @@
 
                     @forelse ($responsibilities as $responsibility)
                         <div id="res{{ $responsibility->id }}"
-                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">
+                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-32 flex flex-row items-center justify-between">
                             <a href="{{ route('showresponsibility', $responsibility->id) }}">
                                 <p class='hover:text-6xl modelTitle'>
                                     {{ $responsibility->name }}</p>

@@ -30,16 +30,16 @@ class ActionController extends Controller
         $allactions = Action::all();
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(6);
-        foreach ($responsibilities as $responsibility) {
-            $projects =  $responsibility->projects;
-            // foreach($projects as $project){
-            //     $actions = $project->actions->where('deadline', '=', $today);
-            //     // dd($actions);
-            // }
-        };
+        // foreach ($responsibilities as $responsibility) {
+        //     $projects =  $responsibility->projects;
+        //     // foreach($projects as $project){
+        //     //     $actions = $project->actions->where('deadline', '=', $today);
+        //     //     // dd($actions);
+        //     // }
+        // };
 
         // $actions = $allactions->where('deadline', '=', $today);
-        return view('apppages.actions.todayaction', compact("projects", "today", "responsibilities"));
+        return view('apppages.actions.todayaction', compact("today", "responsibilities"));
     }
     public function week()
     {

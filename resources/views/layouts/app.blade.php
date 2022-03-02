@@ -34,7 +34,7 @@
         <!-- Page Heading -->
         @if (isset($header))
             <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex gap-4">
                     {{ $header }}
                 </div>
             </header>
@@ -64,11 +64,11 @@
                         console.log(response.success);
                         var message = response;
                         $("#action" + id).remove();
-                        $("#deletemessage").append(response.success).show().fadeOut( 3000, "linear");
-                   
+                        $("#deletemessage").append(response.success).show().fadeOut(3000, "linear");
+
                         // $("#deletemessage").toggle("<p>response</p>");
 
-                        
+
                     }
 
                 })
@@ -87,7 +87,7 @@
                     success: function(response) {
                         console.log(response);
                         $("#res" + id).remove();
-                        $("#deletemessage").append(response.success).show().fadeOut( 3000, "linear");
+                        $("#deletemessage").append(response.success).show().fadeOut(3000, "linear");
 
                     }
                 })
@@ -107,7 +107,7 @@
                     success: function(response) {
                         console.log(response);
                         $("#project" + id).remove();
-                        $("#deletemessage").append(response.success).show().fadeOut( 3000, "linear");
+                        $("#deletemessage").append(response.success).show().fadeOut(3000, "linear");
 
                     }
                 })
@@ -121,7 +121,7 @@
             var referrer = "http://127.0.0.1:8000/actions/startaction/" + id;
             $.ajax({
                 url: referrer,
-                type: 'GET',
+                type: 'PUT',
                 dataType: "json",
                 data: {
                     "id": id,
@@ -152,7 +152,7 @@
             var referrer = "http://127.0.0.1:8000/actions/doneaction/" + id;
             $.ajax({
                 url: referrer,
-                type: 'GET',
+                type: 'PUT',
                 dataType: "json",
                 data: {
                     "id": id,
@@ -168,6 +168,26 @@
                     $("#collectionv").load(location.href + " #collectionv");
                     $("#collections").load(location.href + " #collections");
                     $("#collectiond").load(location.href + " #collectiond");
+                }
+
+            })
+        }
+
+        function archiveProject(id) {
+
+            var token = $("meta[name='csrf-token']").attr("content");
+            var main_url = "http://127.0.0.1:8000";
+            var referrer = "http://127.0.0.1:8000/project/archive/" + id;
+            $.ajax({
+                url: referrer,
+                type: 'PUT',
+                dataType: "json",
+                data: {
+                    "id": id,
+                    "_token": token,
+                },
+                success: function(response) {
+                    $("#projectCollection").load(location.href + " #projectCollection");
                 }
 
             })

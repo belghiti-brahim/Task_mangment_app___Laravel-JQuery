@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->string("definition");
             $table->foreignId("responsibility_id")->constrained("responsibilities")->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean("archive")->default(true);
 
             $table->timestamps();
         });
