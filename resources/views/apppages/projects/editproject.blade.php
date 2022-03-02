@@ -91,32 +91,26 @@
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                                         {{-- <option value="" selected>Open this select menu</option> --}}
                                         @if ($project->parent == null)
-                                            {
                                             <option value="">aucun</option>
-
-                                        } @else{
+                                        @else
                                             <option value="{{ $project->parent->id }}">{{ $project->parent->name }}
                                             </option>
                                             <option value="">aucun</option>
-
-                                            }
                                         @endif
                                         @forelse ($responsibilities as $responsibility)
                                             @forelse ($responsibility->projects as $projects)
                                                 @if ($projects->project_id != null || $projects->id == $project->id)
-                                                    {
                                                     <option class="hidden" value={{ $projects->id }}>
                                                         {{ $projects->name }}
-                                                        }
-                                                    @else{
+                                                    @else
                                                     <option value={{ $projects->id }}>{{ $projects->name }}
                                                     </option>
-                                                    }
+                                                    
                                                 @endif
                                             @empty
-                                                <option>tu n'a aucun projet creé.</option>
                                             @endforelse
                                         @empty
+                                        <option>tu n'a aucun projet creé.</option>
                                         @endforelse
                                     </select>
 

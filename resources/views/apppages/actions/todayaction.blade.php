@@ -31,33 +31,36 @@
                     <h1 class="hierarchyl1">{{ $today }}</h1>
                     <div class="col-start-1 flex flex-col gap-y-4">
                         <h3 class="text-xl">À faire</h3>
-                        @forelse ($projects as $project)
-                            @foreach ($project->actions as $action)
-                                @foreach ($action->contexts as $contextaction)
-                                    @if ($contextaction->pivot->context_id == 1)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                            <a href="">
-                                                <p class="">{{ $action->description }}</p>
-                                            </a>
-                                            <div class="flex flex-row">
-                                                <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
-                                                    class="w-4 h-4 hover:w-6 hover:h-6">
-                                                    <img src="{{ asset('images/start.png') }}"
-                                                        alt="start action button">
+                        @forelse ($responsibilities as $projects)
+                            @foreach ($projects->projects as $project)
+                                @foreach ($project->actions as $action)
+                                    @foreach ($action->contexts as $contextaction)
+                                        @if ($contextaction->pivot->context_id == 1)
+                                            <div id="action{{ $action->id }}"
+                                                class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                                <a href="">
+                                                    <p class="">{{ $action->description }}</p>
                                                 </a>
-                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                    class="w-4 h-4 hover:w-8 hover:h-8">
-                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    onclick="deleteAction({{ $action->id }})"
-                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                                </a>
+                                                <div class="flex flex-row">
+                                                    <a href="javascript:void(0)"
+                                                        onclick="startAction({{ $action->id }})"
+                                                        class="w-4 h-4 hover:w-6 hover:h-6">
+                                                        <img src="{{ asset('images/start.png') }}"
+                                                            alt="start action button">
+                                                    </a>
+                                                    <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                        class="w-4 h-4 hover:w-8 hover:h-8">
+                                                        <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        onclick="deleteAction({{ $action->id }})"
+                                                        class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                            src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             @endforeach
                         @empty
@@ -70,32 +73,35 @@
                     </div>
                     <div class="col-start-2 flex flex-col gap-y-4">
                         <h3 class="text-xl">En cours</h3>
-                        @forelse ($projects as $project)
-                            @foreach ($project->actions as $action)
-                                @foreach ($action->contexts as $contextaction)
-                                    @if ($contextaction->pivot->context_id == 2)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                            <a href="">
-                                                <p class="">{{ $action->description }}</p>
-                                            </a>
-                                            <div class="flex flex-row">
-                                                <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
-                                                    class="w-4 h-4 hover:w-6 hover:h-6">
-                                                    <img src="{{ asset('images/done.png') }}" alt="done button">
+                        @forelse ($responsibilities as $projects)
+                            @foreach ($projects->projects as $project)
+                                @foreach ($project->actions as $action)
+                                    @foreach ($action->contexts as $contextaction)
+                                        @if ($contextaction->pivot->context_id == 2)
+                                            <div id="action{{ $action->id }}"
+                                                class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                                <a href="">
+                                                    <p class="">{{ $action->description }}</p>
                                                 </a>
-                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                    class="w-4 h-4 hover:w-8 hover:h-8">
-                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    onclick="deleteAction({{ $action->id }})"
-                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                                </a>
+                                                <div class="flex flex-row">
+                                                    <a href="javascript:void(0)"
+                                                        onclick="doneAction({{ $action->id }})"
+                                                        class="w-4 h-4 hover:w-6 hover:h-6">
+                                                        <img src="{{ asset('images/done.png') }}" alt="done button">
+                                                    </a>
+                                                    <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                        class="w-4 h-4 hover:w-8 hover:h-8">
+                                                        <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        onclick="deleteAction({{ $action->id }})"
+                                                        class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                            src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             @endforeach
                         @empty
@@ -108,31 +114,33 @@
                     </div>
                     <div class="col-start-3 flex flex-col gap-y-4">
                         <h3 class="text-xl">Fait</h3>
-                        @forelse ($projects as $project)
-                            @foreach ($project->actions as $action)
-                                @foreach ($action->contexts as $contextaction)
-                                    @if ($contextaction->pivot->context_id == 3)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
-                                            <a href="">
-                                                <p class="line-through">{{ $action->description }}</p>
-                                            </a>
-                                            <div class="flex flex-row">
-                                                {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
+                        @forelse ($responsibilities as $projects)
+                            @foreach ($projects->projects as $project)
+                                @foreach ($project->actions as $action)
+                                    @foreach ($action->contexts as $contextaction)
+                                        @if ($contextaction->pivot->context_id == 3)
+                                            <div id="action{{ $action->id }}"
+                                                class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                                <a href="">
+                                                    <p class="line-through">{{ $action->description }}</p>
+                                                </a>
+                                                <div class="flex flex-row">
+                                                    {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
                                                 <img src="{{ asset('images/done.png') }}" alt="donebutton">
                                             </a> --}}
-                                                <a href="{{ route('editaction', $action->id) }}" onclick=""
-                                                    class="w-4 h-4 hover:w-8 hover:h-8">
-                                                    <img src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                                </a>
-                                                <a href="javascript:void(0)"
-                                                    onclick="deleteAction({{ $action->id }})"
-                                                    class="w-4 h-4 hover:w-6 hover:h-6"> <img
-                                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                                </a>
+                                                    <a href="{{ route('editaction', $action->id) }}" onclick=""
+                                                        class="w-4 h-4 hover:w-8 hover:h-8">
+                                                        <img src="{{ asset('images/edit.png') }}" alt="editbutton">
+                                                    </a>
+                                                    <a href="javascript:void(0)"
+                                                        onclick="deleteAction({{ $action->id }})"
+                                                        class="w-4 h-4 hover:w-6 hover:h-6"> <img
+                                                            src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @endif
+                                    @endforeach
                                 @endforeach
                             @endforeach
                         @empty

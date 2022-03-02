@@ -19,11 +19,12 @@ class ProjectController extends Controller
      */
     public function index()
     {
+        $projects = Project::paginate(6);
         $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(6);
-        foreach ($responsibilities as $responsibility) {
-            $projects =  $responsibility->projects;
-        };
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
+        // foreach ($responsibilities as $responsibility) {
+        //     $projects =  $responsibility->projects;
+        // };
 
         // $projects = Project::with('children')->paginate(9);
         return view('apppages.projects.indexproject', compact("projects", "responsibilities"));

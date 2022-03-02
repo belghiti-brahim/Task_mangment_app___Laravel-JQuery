@@ -55,9 +55,10 @@
                                     <label for="project" class="block text-sm font-medium text-gray-700">Projet</label>
                                     <select id="project" name="project" autocomplete="color-name"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
-                                        @forelse ($projects as $project)
-                                            <option value={{ $project->id }}>{{ $project->name }}</option>
-
+                                        @forelse ($responsibilities as $projects)
+                                            @foreach ($projects->projects as $project)
+                                                <option value={{ $project->id }}>{{ $project->name }}</option>
+                                            @endforeach
                                         @empty
                                             <option>Il n'y a aucun projet</option>
                                         @endforelse

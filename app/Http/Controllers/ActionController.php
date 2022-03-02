@@ -39,7 +39,7 @@ class ActionController extends Controller
         };
 
         // $actions = $allactions->where('deadline', '=', $today);
-        return view('apppages.actions.todayaction', compact("projects", "today"));
+        return view('apppages.actions.todayaction', compact("projects", "today", "responsibilities"));
     }
     public function week()
     {
@@ -50,6 +50,7 @@ class ActionController extends Controller
         //         'deadline',
         //         [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
         //     )->get();
+        
         $actions = Action::all();
         $monday = $today->startOfWeek()->toDateString();
         $tueasday = $today->addDay(1)->toDateString();
@@ -80,11 +81,13 @@ class ActionController extends Controller
         // $authid = Auth::user()->id;
         // $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
-        foreach ($responsibilities as $responsibility) {
-            $projects =  $responsibility->projects;
-        };
-        return view("apppages.actions.createaction", compact("projects"));
+        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
+        // foreach ($responsibilities as $responsibility) {
+        //     $projects =  $responsibility->projects;
+
+        // };
+
+        return view("apppages.actions.createaction", compact("responsibilities"));
     }
 
     /**
