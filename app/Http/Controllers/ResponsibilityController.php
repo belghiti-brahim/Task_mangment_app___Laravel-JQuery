@@ -68,7 +68,7 @@ class ResponsibilityController extends Controller
     {
         $responsibility = Responsibility::find($id);
         // $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->get();
-        $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->whereNull('project_id')->orderBy('archive','desc')->get();
+        $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->whereNull('project_id')->orderBy('archive','desc')->orderBy('created_at','desc')->paginate(8);
         // $projectss = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->paginate(5);
         // foreach ($projectss as $Project){
         //    foreach($Project->actions as $action){

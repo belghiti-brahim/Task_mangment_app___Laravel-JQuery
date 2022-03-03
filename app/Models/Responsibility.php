@@ -15,6 +15,9 @@ class Responsibility extends Model
         return $this->hasMany(Project::class, 'responsibility_id', 'id');
 
     }
+    public function actions(){
+        return $this->hasManyThrough(Action::class,Project::class);
+    }
     public function users(){
         return $this->belongsTo(User::class, "user_id", "id");
     }

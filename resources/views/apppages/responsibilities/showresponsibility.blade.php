@@ -142,5 +142,7 @@
                 </div>
             </div>
         </div>
+                {{ $projects->links('pagination::simple-tailwind') }}
+
     </main>
 </x-app-layout>

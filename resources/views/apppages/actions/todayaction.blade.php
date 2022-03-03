@@ -4,9 +4,9 @@
         <x-jet-nav-link href="{{ route('today') }}" :active="request()->routeIs('today')">
             {{ __("Aujourd'hui") }}
         </x-jet-nav-link>
-        {{-- <x-jet-nav-link href="{{ route('week') }}" :active="request()->routeIs('week')">
+        <x-jet-nav-link href="{{ route('week') }}" :active="request()->routeIs('week')">
             {{ __('cette semaine') }}
-        </x-jet-nav-link> --}}
+        </x-jet-nav-link>
         {{-- <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
             {{ __('Toutes les actions') }}
         </x-jet-nav-link> --}}

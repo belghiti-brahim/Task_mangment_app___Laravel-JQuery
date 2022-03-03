@@ -19,22 +19,31 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(6);
         $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
-        // foreach ($responsibilities as $responsibility) {
-        //     $projects =  $responsibility->projects;
-        // };
-
-        // $projects = Project::with('children')->paginate(9);
-        return view('apppages.projects.indexproject', compact("projects", "responsibilities"));
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->paginate(6);
+        return view('apppages.projects.indexproject', compact("projects"));
     }
 
     public function search(request $request)
     {
+        $authid = Auth::user()->id;
         $projectname = $request->input('findproject');
-        $projects = Project::where('name', 'LIKE', '%' . $projectname . '%')->get();
-        return view('apppages.projects.oneproject', compact("projects"));
+        // $projectname = "qqqqq";
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->get();
+        // dd($projects);
+        $foundprojects = $projects->where('name', '=', $projectname);
+        // if (count($projects) > 0)
+            return view('apppages.projects.oneproject', compact("foundprojects", "projects"));
+        // else
+        // return view('apppages.projects.indexproject', compact("projects"))->with('No Details found. Try to search again !');
     }
 
     public function archive($id)
@@ -55,8 +64,12 @@ class ProjectController extends Controller
     public function archived()
     {
         $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
-        return view('apppages.projects.archiveproject', compact("responsibilities"));
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->paginate(6);
+        return view('apppages.projects.archiveproject', compact("projects"));
     }
 
     /**

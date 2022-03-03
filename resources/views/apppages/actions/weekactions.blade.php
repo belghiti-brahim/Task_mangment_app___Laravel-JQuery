@@ -17,8 +17,8 @@
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
 
-    <main class="w-full min-h-screen flex justify-center ">
-        <div class="min-w-full py-12 grid grid-cols-7 items-start gap-8 ">
+    <main class="min-h-screen flex justify-center ">
+        <div class="py-12 grid grid-cols-6">
             {{-- lundi --}}
             <div id="collectionl" class="sm:px-6 lg:px-8 flex flex-col gap-4">
                 <h1 class="hierarchyl3">Lundi</h1>

@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <x-jet-nav-link href="{{ route('createresponsability') }}"
+        {{-- <x-jet-nav-link href="{{ route('createresponsability') }}"
             :active="request()->routeIs('createresponsability')">
             {{ __('Créer une résponsabilité') }}
         </x-jet-nav-link>
         <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
             {{ __('Créer un projet') }}
-        </x-jet-nav-link>
+        </x-jet-nav-link> --}}
         <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
             {{ __('Créer une action') }}
         </x-jet-nav-link>
@@ -40,8 +40,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="px-2 py-6 text-left sm:px-6">
-                    <button type="submit" class="btn">aller / retour</button>
+                <div class="px-1 py-6 text-left sm:px-6 flex flex-row gap-4">
+                    <div class="">
+                        <button type="submit" class="btn">chercher</button>
+                    </div>
+                    <a href="{{ route('indexprojects') }}" class="">
+                        <button type="button" class="btn">index</button>
+                    </a>
                 </div>
             </div>
         </form>
@@ -50,7 +55,7 @@
 
                 <div class="grid grid-cols-3 gap-6">
 
-                    @forelse ($projects as $project)
+                    @forelse ($foundprojects as $project)
                         <div id="project{{ $project->id }}"
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
                             <a href="{{ route('showproject', $project->id) }}">
