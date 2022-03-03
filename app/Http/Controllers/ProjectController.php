@@ -24,14 +24,8 @@ class ProjectController extends Controller
             ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
-            ->paginate(7);
-        // $actions = Action::select('actions.*')
-        //     ->join('projects', 'projects.id', '=', 'actions.project_id')
-        //     ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
-        //     ->join('users', 'users.id', '=', 'responsibilities.user_id')
-        //     ->where('user_id', $authid)
-        //     ->get();
-
+            ->paginate(12);
+       
         return view('apppages.projects.indexproject', compact("projects"));
     }
 
@@ -39,19 +33,28 @@ class ProjectController extends Controller
     {
         $authid = Auth::user()->id;
         $projectname = $request->input('findproject');
-        // $projectname = "qqqqq";
         $projects = Project::select('projects.*')
             ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
-        // dd($projects);
-        $foundprojects = $projects->where('name', '=', $projectname);
-        // if (count($projects) > 0)
+        $foundprojects = $projects->where('archive', '=', "1")->where('name', '=', $projectname);
         return view('apppages.projects.oneproject', compact("foundprojects", "projects"));
-        // else
-        // return view('apppages.projects.indexproject', compact("projects"))->with('No Details found. Try to search again !');
+     
     }
+
+    public function searcharchive(request $request){
+        $authid = Auth::user()->id;
+        $projectname = $request->input('findproject');
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->get();
+        $foundprojects = $projects->where('archive', '=', "0")->where('name', '=', $projectname);
+        return view('apppages.projects.foundarchiveprojects', compact("foundprojects", "projects"));
+    }
+
 
     public function archive($id)
     {

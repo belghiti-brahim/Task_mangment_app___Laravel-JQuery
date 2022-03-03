@@ -46,6 +46,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name("editproject");
         Route::put('/update/{id}', [ProjectController::class, 'update'])->name("updateproject");
         Route::get('/search', [ProjectController::class, 'search'])->name("find");
+        Route::get('/searcharchive', [ProjectController::class, 'searcharchive'])->name("searcharchive");
         Route::put('/archive/{id}', [ProjectController::class, 'archive'])->name("archive");
         Route::get('/archivedprojects', [ProjectController::class, "archived"])->name("archivedprojects");
 

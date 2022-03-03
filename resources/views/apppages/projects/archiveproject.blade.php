@@ -14,7 +14,7 @@
     </div>
 
     <main class="relative min-h-screen">
-        <form action="{{ route('find') }}" method="GET">
+        <form action="{{ route('searcharchive') }}" method="GET">
             @csrf
             <div class="px-12 py-3 flex flex-row items-end">
                 <div class="sm:p-6">
@@ -43,7 +43,7 @@
                             @if ($project->archive === 0)
                                 <div id="project{{ $project->id }}"  style="outline-style: solid;
                                     outline-color: {{$project->responsibility->color}};"
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
+                                    class=" opacity-50 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
                                     <a href="{{ route('showproject', $project->id) }}">
                                         <p class="">{{ $project->name }} </p>
                                     </a>
