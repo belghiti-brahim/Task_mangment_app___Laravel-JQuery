@@ -41,7 +41,8 @@
                 <div class="grid sm:grid-col-1 lg:grid-cols-3 gap-6">
                         @forelse ($projects as $project)
                             @if ($project->archive === 0)
-                                <div id="project{{ $project->id }}"
+                                <div id="project{{ $project->id }}"  style="outline-style: solid;
+                                    outline-color: {{$project->responsibility->color}};"
                                     class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
                                     <a href="{{ route('showproject', $project->id) }}">
                                         <p class="">{{ $project->name }} </p>

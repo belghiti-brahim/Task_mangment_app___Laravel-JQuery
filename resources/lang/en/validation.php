@@ -142,19 +142,22 @@ return [
 
     'custom' => [
         'description' => [
-            'required' => 'Le champ - description - est obligatoire.',
+            'required' => 'Le champ - Description - est obligatoire.',
         ],
         'deadline' => [
             'required' => "Le champ - Date d'échéance de l'action - est obligatoire.",
         ],
         'defintionOfDone' => [
-            'required' => 'Le champ  - définition of done - est obligatoire.',
+            'required' => 'Le champ  - Définition of done - est obligatoire.',
         ],
         'project' => [
-            'required' => 'Le champ  - projet - est obligatoire.',
+            'required' => 'Le champ  - Projet - est obligatoire.',
         ],
         'name' => [
-            'required' => 'Le champ  - nom - est obligatoire.',
+            'required' => 'Le champ  - Nom - est obligatoire.',
+        ],
+        'responsibility' => [
+            'required' => 'Le champ  - Responsabilité - est obligatoire.',
         ],
     ],
 

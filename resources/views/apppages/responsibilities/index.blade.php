@@ -18,7 +18,8 @@
         <div class="px-10 relative md:fixed md:w-2/5 min-h-screen in flex items-center justify-content">
             <div class="flex flex-col">
                 <h1 class="pageContentTitle">Je suis</h1>
-                <p class="text-kramp-500">Les différents aspects de mon travail et de ma vie personnelle auxquels je souhaite
+                <p class="text-kramp-500">Les différents aspects de mon travail et de ma vie personnelle auxquels je
+                    souhaite
                     consacrer
                     mon temps de manière équilibrée, en espérant obtenir de bons résultats dans chacun d'eux .</p>
             </div>
@@ -30,8 +31,9 @@
                     {{-- {{ dd($responsibilities) }} --}}
 
                     @forelse ($responsibilities as $responsibility)
-                        <div id="res{{ $responsibility->id }}"
-                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-32 flex flex-row items-center justify-between">
+                        <div id="res{{ $responsibility->id }}" style="outline-style: solid;
+                            outline-color: {{ $responsibility->color }};"
+                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-32 flex flex-row items-center justify-between">
                             <a href="{{ route('showresponsibility', $responsibility->id) }}">
                                 <p class='hover:text-6xl modelTitle'>
                                     {{ $responsibility->name }}</p>
@@ -42,8 +44,8 @@
                                         alt="editbutton">
                                 </a>
                                 <a href="javascript:void(0)" onclick="deleteResponsibility({{ $responsibility->id }})"
-                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img src="{{ asset('images/delete.png') }}"
-                                        alt="deltebutton">
+                                    class="w-8 h-8 hover:w-12 hover:h-12"> <img
+                                        src="{{ asset('images/delete.png') }}" alt="deltebutton">
                                 </a>
                             </div>
                         </div>

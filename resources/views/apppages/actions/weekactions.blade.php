@@ -28,8 +28,9 @@
                         @forelse ($mondayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
                                         </a>
@@ -52,7 +53,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -62,8 +63,9 @@
                         @forelse ($mondayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
@@ -82,7 +84,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -98,8 +100,9 @@
                         @forelse ($tueasdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
                                         </a>
@@ -133,8 +136,9 @@
                         @forelse ($tueasdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
@@ -156,7 +160,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -172,8 +176,9 @@
                         @forelse ($wednesdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
                                         </a>
@@ -196,7 +201,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -206,8 +211,9 @@
                         @forelse ($wednesdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
@@ -229,7 +235,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -245,8 +251,9 @@
                         @forelse ($thursdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
                                         </a>
@@ -269,7 +276,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -280,8 +287,9 @@
                         @forelse ($thursdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
@@ -303,7 +311,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -319,8 +327,9 @@
                         @forelse ($fridayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
                                         </a>
@@ -343,7 +352,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -353,8 +362,9 @@
                         @forelse ($fridayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
                                         </a>
@@ -373,7 +383,7 @@
                             @endforeach
                         @empty
                             <div
-                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                 <p class="text-sm">tu n'as aucune action</p>
                             </div>
                         @endforelse
@@ -390,8 +400,9 @@
                             @forelse ($saturdayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 1)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                            class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="text-sm">{{ $action->description }}</p>
                                             </a>
@@ -416,7 +427,7 @@
                                 @endforeach
                             @empty
                                 <div
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                     <p class="text-sm">tu n'as aucune action</p>
                                 </div>
                             @endforelse
@@ -426,8 +437,9 @@
                             @forelse ($saturdayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 3)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                            class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="line-through text-sm">{{ $action->description }}</p>
                                             </a>
@@ -447,7 +459,7 @@
                                 @endforeach
                             @empty
                                 <div
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                     <p class="text-sm">tu n'as aucune action</p>
                                 </div>
                             @endforelse
@@ -462,8 +474,9 @@
                             @forelse ($sundayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 1)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-start justify-between">
+                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                            class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="text-sm">{{ $action->description }}</p>
                                             </a>
@@ -488,7 +501,7 @@
                                 @endforeach
                             @empty
                                 <div
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                     <p class="text-sm">tu n'as aucune action</p>
                                 </div>
                             @endforelse
@@ -498,8 +511,9 @@
                             @forelse ($sundayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 3)
-                                        <div id="action{{ $action->id }}"
-                                            class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
+                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                            class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="line-through text-sm">{{ $action->description }}</p>
                                             </a>
@@ -519,7 +533,7 @@
                                 @endforeach
                             @empty
                                 <div
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between">
                                     <p class="text-sm">tu n'as aucune action</p>
                                 </div>
                             @endforelse

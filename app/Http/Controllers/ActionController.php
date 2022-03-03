@@ -37,9 +37,15 @@ class ActionController extends Controller
         //     //     // dd($actions);
         //     // }
         // };
+        $actions = Action::select('actions.*')
+        ->join('projects', 'projects.id', '=', 'actions.project_id')
+        ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+        ->join('users', 'users.id', '=', 'responsibilities.user_id')
+        ->where('user_id', $authid)
+        ->get();
 
         // $actions = $allactions->where('deadline', '=', $today);
-        return view('apppages.actions.todayaction', compact("today", "responsibilities"));
+        return view('apppages.actions.todayaction', compact("today", "actions"));
     }
     public function week()
     {
@@ -50,8 +56,15 @@ class ActionController extends Controller
         //         'deadline',
         //         [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
         //     )->get();
-        
-        $actions = Action::all();
+        $authid = Auth::user()->id;
+        $actions = Action::select('actions.*')
+            ->join('projects', 'projects.id', '=', 'actions.project_id')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->get();
+        //     dd($actions);
+        // $actions = Action::all();
         $monday = $today->startOfWeek()->toDateString();
         $tueasday = $today->addDay(1)->toDateString();
         $wednesday = $today->addDay(1)->toDateString();
@@ -86,8 +99,13 @@ class ActionController extends Controller
         //     $projects =  $responsibility->projects;
 
         // };
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->get();
 
-        return view("apppages.actions.createaction", compact("responsibilities"));
+        return view("apppages.actions.createaction", compact("projects"));
     }
 
     /**
@@ -163,12 +181,14 @@ class ActionController extends Controller
      */
     public function edit($id)
     {
-     
+
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(3);
-        foreach ($responsibilities as $responsibility) {
-            $projects =  $responsibility->projects;
-        };
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->get();
         $action = Action::find($id);
         return view("apppages.actions.editaction", compact("projects", 'action'));
     }

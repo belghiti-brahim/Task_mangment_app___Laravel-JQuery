@@ -83,7 +83,7 @@
                                             </option>
 
                                         @empty
-                                            <option>tu n'a aucun résponsibilité creé.</option>
+                                            <option value="">tu n'a aucun résponsibilité creé.</option>
                                         @endforelse
                                     </select>
 

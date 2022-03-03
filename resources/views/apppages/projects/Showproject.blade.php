@@ -41,8 +41,9 @@
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}" style="outline-style: solid;
+                                        outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
+                                        class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
                                             <p class="">{{ $action->description }}</p>
                                         </a>
@@ -75,8 +76,9 @@
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}" style="outline-style: solid;
+                                        outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
+                                        class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
                                             <p class="">{{ $action->description }}</p>
                                         </a>
@@ -110,8 +112,9 @@
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"
-                                        class="outline outline-orange-100 px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                    <div id="action{{ $action->id }}" style="outline-style: solid;
+                                        outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
+                                        class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
                                             <p class="line-through">{{ $action->description }}</p>
                                         </a>

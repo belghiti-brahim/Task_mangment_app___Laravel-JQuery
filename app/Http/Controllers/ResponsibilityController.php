@@ -45,14 +45,21 @@ class ResponsibilityController extends Controller
 
             'name' => 'required',
             'description' => 'required',
+
         ]);
 
-        // $responsibilitycolor = 'bg' . '-' . $request->color . '-' . '400';
+        // if ($request->color == "emerald") {
+        //     $responsibilitycolor = "#50c878";
+        // } else {
+        //     $responsibilitycolor =  $request->color;
+        // }
+        $responsibilitycolor =  $request->color;
         // dd($responsibilitycolor);
         Responsibility::create([
             'name' => $request->name,
             'description' => $request->description,
-            'user_id' => $userid
+            'user_id' => $userid,
+            'color' => $responsibilitycolor
         ]);
         $responsibilities = Responsibility::all();
         return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été crée avec succès');
@@ -68,7 +75,7 @@ class ResponsibilityController extends Controller
     {
         $responsibility = Responsibility::find($id);
         // $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->get();
-        $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->whereNull('project_id')->orderBy('archive','desc')->orderBy('created_at','desc')->paginate(8);
+        $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->whereNull('project_id')->orderBy('archive', 'desc')->orderBy('created_at', 'desc')->paginate(8);
         // $projectss = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->paginate(5);
         // foreach ($projectss as $Project){
         //    foreach($Project->actions as $action){
@@ -77,7 +84,7 @@ class ResponsibilityController extends Controller
         //        };
         //    };
         // }
-       
+
         // $projects = Project::with("children")->whereNull('project_id')->get();
         // $Projects = Project::with("children")->get();
 
@@ -125,12 +132,12 @@ class ResponsibilityController extends Controller
 
             $responsibility->name = $request->name;
             $responsibility->description = $request->description;
+            $responsibility->color = $request->color;
             $responsibility->save();
 
             return redirect()->route('resindex')->with('message', 'Ta responsabilité a été modifiée avec succès');
-        
+        }
     }
-}
 
     /**
      * Remove the specified resource from storage.

@@ -39,30 +39,31 @@
         <div class="ml-auto py-5">
             <div id="projectCollection" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="grid sm:grid-col-1 lg:grid-cols-3 gap-6">
-                        @forelse ($projects as $project)
-                            @if ($project->archive === 1)
-                                <div id="project{{ $project->id }}"
-                                    class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
-                                    <a href="{{ route('showproject', $project->id) }}">
-                                        <p class="">{{ $project->name }} </p>
+                    @forelse ($projects as $project)
+                        @if ($project->archive === 1)
+                            <div id="project{{ $project->id }}" style="outline-style: solid;
+                                outline-color: {{$project->responsibility->color}};"
+                                class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
+                                <a href="{{ route('showproject', $project->id) }}">
+                                    <p class="">{{ $project->name }} </p>
+                                </a>
+                                <div class="flex flex-row">
+                                    <a href="{{ route('editproject', $project->id) }}"
+                                        class="w-6 h-6 hover:w-8 hover:h-8"> <img
+                                            src="{{ asset('images/edit.png') }}" alt="editbutton">
                                     </a>
-                                    <div class="flex flex-row">
-                                        <a href="{{ route('editproject', $project->id) }}"
-                                            class="w-6 h-6 hover:w-8 hover:h-8"> <img
-                                                src="{{ asset('images/edit.png') }}" alt="editbutton">
-                                        </a>
-                                        <a href="javascript:void(0)" onclick="archiveProject({{ $project->id }})"
-                                            class="w-6 h-6 hover:w-8 hover:h-8"> <img
-                                                src="{{ asset('images/inbox.png') }}" alt="deltebutton">
-                                        </a>
-                                        <a href="javascript:void(0)" onclick="deleteProject({{ $project->id }})"
-                                            class="w-6 h-6 hover:w-8 hover:h-8"> <img
-                                                src="{{ asset('images/delete.png') }}" alt="deltebutton">
-                                        </a>
-                                    </div>
+                                    <a href="javascript:void(0)" onclick="archiveProject({{ $project->id }})"
+                                        class="w-6 h-6 hover:w-8 hover:h-8"> <img
+                                            src="{{ asset('images/inbox.png') }}" alt="deltebutton">
+                                    </a>
+                                    <a href="javascript:void(0)" onclick="deleteProject({{ $project->id }})"
+                                        class="w-6 h-6 hover:w-8 hover:h-8"> <img
+                                            src="{{ asset('images/delete.png') }}" alt="deltebutton">
+                                    </a>
                                 </div>
-                            @else
-                            @endif
+                            </div>
+                        @else
+                        @endif
                     @empty
                         <div
                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-row items-center justify-between">

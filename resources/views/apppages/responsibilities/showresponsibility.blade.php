@@ -37,8 +37,9 @@
                 <div class=" grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
                     @forelse ($projects as $project)
                         @if ($project->archive === 1)
-                            <div id="project{{ $project->id }}"
-                                class="outline outline-orange-100 px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
+                            <div id="project{{ $project->id }}" style="outline-style: solid;
+                                outline-color: {{ $responsibility->color }};"s
+                                class="px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
                                 <div class="flex flex-col gap-y-3">
                                     <a class="h-full w-full" href="{{ route('showproject', $project->id) }}">
                                         <p class="w-full hover:text-3xl font-bold">{{ $project->name }} </p>
@@ -59,7 +60,7 @@
                                     </div>
                                     @forelse($project->children as $subproject)
                                         <div
-                                            class="bg-gray-200 shadow-xl sm:rounded-lg w-68 h-full min flex flex-row items-start justify-around">
+                                            class="px-6 py-1 bg-gray-200 shadow-xl sm:rounded-lg w-68 h-full flex flex-row items-start justify-around gap-4">
                                             <a href="{{ route('showproject', $subproject->id) }}">
                                                 <p class="hover:text-1xl font-meduim">{{ $subproject->name }} </p>
                                             </a>
@@ -85,8 +86,9 @@
                                 </div>
                             </div>
                         @else
-                            <div id="project{{ $project->id }}"
-                                class="outline outline-orange-100 px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
+                            <div id="project{{ $project->id }}" style="outline-style: solid;
+                                outline-color: {{ $responsibility->color }};"
+                                class="px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
                                 <div class="opacity-25 flex flex-col gap-y-3">
                                     <a class="h-full w-full" href="{{ route('showproject', $project->id) }}">
                                         <p class="w-full hover:text-3xl font-bold">{{ $project->name }} </p>

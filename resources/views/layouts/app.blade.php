@@ -13,7 +13,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+    <style>
+        [x-cloak] {
+            display: none;
+        }
+    </style>
     @livewireStyles
 
     <!-- Scripts -->
@@ -191,6 +195,15 @@
                 }
 
             })
+        }
+    </script>
+    <script>
+        function app() {
+            return {
+                isOpen: false,
+                colors: ['#F87171', '#FB923C', '#FFEB3B', '#A3E635', '#4CAF50',  '#2DD4BF', '#60A5FA','#C084FC', '#F472B6'],
+                colorSelected: '#F87171'
+            }
         }
     </script>
 </body>

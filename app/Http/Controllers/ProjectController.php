@@ -24,7 +24,14 @@ class ProjectController extends Controller
             ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
-            ->paginate(6);
+            ->paginate(7);
+        // $actions = Action::select('actions.*')
+        //     ->join('projects', 'projects.id', '=', 'actions.project_id')
+        //     ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+        //     ->join('users', 'users.id', '=', 'responsibilities.user_id')
+        //     ->where('user_id', $authid)
+        //     ->get();
+
         return view('apppages.projects.indexproject', compact("projects"));
     }
 
@@ -41,7 +48,7 @@ class ProjectController extends Controller
         // dd($projects);
         $foundprojects = $projects->where('name', '=', $projectname);
         // if (count($projects) > 0)
-            return view('apppages.projects.oneproject', compact("foundprojects", "projects"));
+        return view('apppages.projects.oneproject', compact("foundprojects", "projects"));
         // else
         // return view('apppages.projects.indexproject', compact("projects"))->with('No Details found. Try to search again !');
     }
@@ -68,7 +75,8 @@ class ProjectController extends Controller
             ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
-            ->paginate(6);
+            ->paginate(12);
+
         return view('apppages.projects.archiveproject', compact("projects"));
     }
 
@@ -107,6 +115,7 @@ class ProjectController extends Controller
         } else {
             $projectId = $request->project;
         }
+        
         Project::create([
             'name' => $request->name,
             'definition' => $request->description,
