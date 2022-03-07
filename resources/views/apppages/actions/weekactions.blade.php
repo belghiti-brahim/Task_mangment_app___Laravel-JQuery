@@ -17,7 +17,7 @@
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
 
-    <main class="min-h-screen flex justify-center ">
+    <main class="min-h-screen flex justify-center">
         <div class="py-12 grid grid-cols-6">
             {{-- lundi --}}
             <div id="collectionl" class="sm:px-6 lg:px-8 flex flex-col gap-4">

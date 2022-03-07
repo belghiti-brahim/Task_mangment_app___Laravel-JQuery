@@ -20,16 +20,16 @@ class ProjectController extends Controller
     public function index()
     {
         $authid = Auth::user()->id;
-        $projects = Project::select('projects.*')
+        $projectss = Project::select('projects.*')
             ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
-            ->where('user_id', $authid)
-            ->paginate(12);
-       
+            ->where('user_id', $authid);
+
+        $projects = $projectss->with("actions")->paginate(12);
         return view('apppages.projects.indexproject', compact("projects"));
     }
 
-    public function search(request $request)
+    public function searchactive(request $request)
     {
         $authid = Auth::user()->id;
         $projectname = $request->input('findproject');
@@ -40,10 +40,10 @@ class ProjectController extends Controller
             ->get();
         $foundprojects = $projects->where('archive', '=', "1")->where('name', '=', $projectname);
         return view('apppages.projects.oneproject', compact("foundprojects", "projects"));
-     
     }
 
-    public function searcharchive(request $request){
+    public function searcharchive(request $request)
+    {
         $authid = Auth::user()->id;
         $projectname = $request->input('findproject');
         $projects = Project::select('projects.*')
@@ -83,6 +83,14 @@ class ProjectController extends Controller
         return view('apppages.projects.archiveproject', compact("projects"));
     }
 
+    public function createwithinresponsibility($id)
+    {
+        $responsibilities = Responsibility::where('id','=', $id)->get();
+        // dd($responsibility);
+        // dd($id);
+        return view('apppages.projects.createproject', compact("responsibilities"));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -118,7 +126,7 @@ class ProjectController extends Controller
         } else {
             $projectId = $request->project;
         }
-        
+
         Project::create([
             'name' => $request->name,
             'definition' => $request->description,

@@ -45,10 +45,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [ProjectController::class, 'destroy'])->name("deleteproject");
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name("editproject");
         Route::put('/update/{id}', [ProjectController::class, 'update'])->name("updateproject");
-        Route::get('/search', [ProjectController::class, 'search'])->name("find");
+        Route::get('/search', [ProjectController::class, 'searchactive'])->name("find");
         Route::get('/searcharchive', [ProjectController::class, 'searcharchive'])->name("searcharchive");
         Route::put('/archive/{id}', [ProjectController::class, 'archive'])->name("archive");
         Route::get('/archivedprojects', [ProjectController::class, "archived"])->name("archivedprojects");
+        Route::get('createaction/{id}',[ProjectController::class,"createwithinresponsibility"])->name("createprojectfromresponsibility");
 
 
     });
@@ -64,5 +65,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/semaine', [ActionController::class, 'week'])->name("week");
         Route::put('/startaction/{id}', [ActionController::class, 'changeActionStatusToDoing'])->name("startaction");
         Route::put('/doneaction/{id}', [ActionController::class, 'changeActionStatusToDone'])->name("doneaction");
+        Route::get('createfromprojet/{id}', [ActionController::class, 'createfromproject'])->name("createfromproject");
     });
 });

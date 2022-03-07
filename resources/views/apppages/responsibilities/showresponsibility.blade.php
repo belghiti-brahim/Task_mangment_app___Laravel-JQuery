@@ -4,8 +4,9 @@
             :active="request()->routeIs('createresponsability')">
             {{ __('Créer une résponsabilité') }}
         </x-jet-nav-link> --}}
-        <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
-            {{ __('Créer un projet') }}
+        <x-jet-nav-link href="{{ route('createprojectfromresponsibility', $responsibility->id) }}"
+            :active="request()->routeIs('createproject')">
+            {{ __('Commencer un projet pour cette responsabilité') }}
         </x-jet-nav-link>
         {{-- <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
             {{ __('Créer une action') }}
@@ -19,11 +20,12 @@
     @endif
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
+
     <main class="relative min-h-screen">
         <div class="px-10 relative md:fixed md:w-2/5 min-h-screen in flex items-center justify-content">
             <div class="flex flex-col">
                 <h1 class="pageContentTitle">Autant que **
-                    <span class="font-light">{{ $responsibility->name }} </span> ** Je m'engage à réaliser:
+                    <span class="font-light">C </span> ** Je m'engage à réaliser:
                 </h1>
                 <p class="text-kramp-500">Un projet est tout ce que nous voulons faire qui nécessite plus d'une étape
                     d'action . C'est donc un mécanisme pour se rappeler que, lorsque nous aurons terminé cette
@@ -38,7 +40,7 @@
                     @forelse ($projects as $project)
                         @if ($project->archive === 1)
                             <div id="project{{ $project->id }}" style="outline-style: solid;
-                                outline-color: {{ $responsibility->color }};"s
+                                outline-color: {{ $responsibility->color }};" s
                                 class="px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
                                 <div class="flex flex-col gap-y-3">
                                     <a class="h-full w-full" href="{{ route('showproject', $project->id) }}">
@@ -144,7 +146,7 @@
                 </div>
             </div>
         </div>
-                {{ $projects->links('pagination::simple-tailwind') }}
+        {{ $projects->links('pagination::simple-tailwind') }}
 
     </main>
 </x-app-layout>

@@ -50,6 +50,7 @@ class ActionController extends Controller
     public function week()
     {
         $today = Carbon::today();
+        $todayy = Carbon::today()->toDateString();
         $weeknumber = Carbon::today()->week();
         // $actions = Action::select("*")
         //     ->whereBetween(
@@ -81,9 +82,16 @@ class ActionController extends Controller
         $saturdayactions = $actions->where('deadline', '=', $saturday);
         $sundayactions = $actions->where('deadline', '=', $sunday);
         // dd($mondayactions);
-        return view('apppages.actions.weekactions', compact("actions", "mondayactions", "tueasdayactions", "wednesdayactions", "thursdayactions", "fridayactions", "saturdayactions", "sundayactions"));
+        return view('apppages.actions.weekactions', compact("todayy","actions", "mondayactions", "tueasdayactions", "wednesdayactions", "thursdayactions", "fridayactions", "saturdayactions", "sundayactions"));
     }
 
+    public function createfromproject($id)
+    {
+        $projects = Project::where('id','=', $id)->get();
+        // dd($projects);
+        // dd($id);
+        return view('apppages.actions.createaction', compact("projects"));
+    }
     /**
      * Show the form for creating a new resource.
      *

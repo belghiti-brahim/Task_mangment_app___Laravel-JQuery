@@ -62,7 +62,5 @@ class User extends Authenticatable
     public function responsibilities(){
         return $this->hasMany(Responsibility::class, "user_id", 'id');
     }
-    public function projects(){
-        return $this->hasManyThrough(Project::class,Responsibility::class);
-    }
+  
 }

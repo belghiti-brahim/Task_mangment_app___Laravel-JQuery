@@ -7,7 +7,7 @@
             {{ __('Projets archivés') }}
         </x-jet-nav-link>
         <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
-            {{ __('Créer un projet') }}
+            {{ __('Commencer un projet') }}
         </x-jet-nav-link>
     </x-slot>
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
@@ -42,7 +42,7 @@
                     @forelse ($projects as $project)
                         @if ($project->archive === 1)
                             <div id="project{{ $project->id }}" style="outline-style: solid;
-                                outline-color: {{$project->responsibility->color}};"
+                                outline-color: {{ $project->responsibility->color }};"
                                 class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-40 flex flex-col items-start justify-around">
                                 <a href="{{ route('showproject', $project->id) }}">
                                     <p class="">{{ $project->name }} </p>

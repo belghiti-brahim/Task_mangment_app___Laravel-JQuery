@@ -7,8 +7,8 @@
         <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
             {{ __('Créer un projet') }}
         </x-jet-nav-link> --}}
-        <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
-            {{ __('Créer une action') }}
+        <x-jet-nav-link href="{{ route('createfromproject', $project->id) }}" :active="request()->routeIs('creataction')">
+            {{ __('Ajouter une action') }}
         </x-jet-nav-link>
     </x-slot>
 

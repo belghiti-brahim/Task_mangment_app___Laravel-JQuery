@@ -2,7 +2,7 @@
     <x-slot name="header">
         <x-jet-nav-link href="{{ route('createresponsability') }}"
             :active="request()->routeIs('createresponsability')">
-            {{ __('Créer une résponsabilité') }}
+            {{ __('Définir une résponsabilité') }}
         </x-jet-nav-link>
     </x-slot>
 
