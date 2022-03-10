@@ -16,7 +16,7 @@
     <main class="relative min-h-screen">
         <form action="{{ route('find') }}" method="GET">
             @csrf
-            <div class="px-12 py-3 flex flex-row items-end">
+            <div class="px-12 pt-4 flex flex-col md:flex-row lg:flex-row items-start lg:items-end">
                 <div class="sm:p-6">
                     <div class="">
                         <div class="">

@@ -23,19 +23,19 @@
 
 
     <main class="relative min-h-screen">
-        <div class="px-10 relative md:fixed md:w-4/12 min-h-screen in flex items-center justify-content">
+        <div class="px-10 pt-8 relative md:fixed md:w-4/12 md:min-h-screen lg:min-h-screen flex items-center justify-content">
             <div class="flex flex-col">
                 <h1 class="pageContentTitle">Pour réaliser le projet
                     <span class="italic font-light">** {{ $project->name }} ** </span>
                 </h1>
-                <p class="text-kramp-500">Les actions à effectuer à une date ou une heure spécifique vont dans le
+                <p class="hidden md:block">Les actions à effectuer à une date ou une heure spécifique vont dans le
                     Calendrier.
                 </p>
             </div>
         </div>
         <div class="md:w-8/12 ml-auto py-12">
             <div id="collection" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="grid grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
                     <div class="col-start-1 flex flex-col gap-y-4">
                         <h3 class="text-xl">À faire</h3>
                         @forelse ($actions as $action)
@@ -43,7 +43,7 @@
                                 @if ($contextaction->pivot->context_id == 1)
                                     <div id="action{{ $action->id }}" style="outline-style: solid;
                                         outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
-                                        class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        class="px-4 py-2 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
                                             <p class="">{{ $action->description }}</p>
                                         </a>
@@ -71,14 +71,14 @@
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-2 flex flex-col gap-y-4">
+                    <div class="flex flex-col gap-y-4">
                         <h3 class="text-xl">En cours</h3>
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 2)
                                     <div id="action{{ $action->id }}" style="outline-style: solid;
                                         outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
-                                        class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        class="px-4 py-2 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
                                             <p class="">{{ $action->description }}</p>
                                         </a>
@@ -106,7 +106,7 @@
                             </div>
                         @endforelse
                     </div>
-                    <div class="col-start-3 flex flex-col gap-y-4">
+                    <div class="flex flex-col gap-y-4">
                         <h3 class="text-xl">Fait</h3>
 
                         @forelse ($actions as $action)
@@ -114,7 +114,7 @@
                                 @if ($contextaction->pivot->context_id == 3)
                                     <div id="action{{ $action->id }}" style="outline-style: solid;
                                         outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
-                                        class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
+                                        class="px-4 py-2 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
                                             <p class="line-through">{{ $action->description }}</p>
                                         </a>

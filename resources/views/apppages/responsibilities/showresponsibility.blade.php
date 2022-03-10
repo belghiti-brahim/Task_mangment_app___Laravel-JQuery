@@ -22,12 +22,12 @@
     </div>
 
     <main class="relative min-h-screen">
-        <div class="px-10 relative md:fixed md:w-2/5 min-h-screen in flex items-center justify-content">
+        <div class="px-10 pt-8 relative md:fixed md:w-2/5 md:min-h-screen lg:min-h-screen flex items-center justify-content">
             <div class="flex flex-col">
-                <h1 class="pageContentTitle">Autant que **
-                    <span class="font-light">C </span> ** Je m'engage à réaliser:
+                <h1 class="pageContentTitle">Étant un **
+                    <span class="font-light"> {{$responsibility->name}} </span> ** Je m'engage à réaliser:
                 </h1>
-                <p class="text-kramp-500">Un projet est tout ce que nous voulons faire qui nécessite plus d'une étape
+                <p class="hidden md:block">Un projet est tout ce que nous voulons faire qui nécessite plus d'une étape
                     d'action . C'est donc un mécanisme pour se rappeler que, lorsque nous aurons terminé cette
                     première étape d'action, il y aura encore quelque chose à faire.
                 </p>
@@ -40,11 +40,11 @@
                     @forelse ($projects as $project)
                         @if ($project->archive === 1)
                             <div id="project{{ $project->id }}" style="outline-style: solid;
-                                outline-color: {{ $responsibility->color }};" s
-                                class="px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
+                                outline-color: {{ $responsibility->color }};"
+                                class="px-8 py-4 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
                                 <div class="flex flex-col gap-y-3">
                                     <a class="h-full w-full" href="{{ route('showproject', $project->id) }}">
-                                        <p class="w-full hover:text-3xl font-bold">{{ $project->name }} </p>
+                                        <p class="w-full hover:font-black">{{ $project->name }} </p>
                                     </a>
                                     <div class="flex flex-row">
                                         <a href="{{ route('editproject', $project->id) }}"
@@ -64,7 +64,7 @@
                                         <div
                                             class="px-6 py-1 bg-gray-200 shadow-xl sm:rounded-lg w-68 h-full flex flex-row items-start justify-around gap-4">
                                             <a href="{{ route('showproject', $subproject->id) }}">
-                                                <p class="hover:text-1xl font-meduim">{{ $subproject->name }} </p>
+                                                <p class="hover:font-black">{{ $subproject->name }} </p>
                                             </a>
                                             <div class="flex flex-row">
                                                 <a href="{{ route('editproject', $subproject->id) }}"
@@ -93,7 +93,7 @@
                                 class="px-10 bg-white shadow-xl sm:rounded-lg  min-h-[8rem] flex flex-col items-start justify-around">
                                 <div class="opacity-25 flex flex-col gap-y-3">
                                     <a class="h-full w-full" href="{{ route('showproject', $project->id) }}">
-                                        <p class="w-full hover:text-3xl font-bold">{{ $project->name }} </p>
+                                        <p class="w-full hover:font-bold">{{ $project->name }} </p>
                                     </a>
                                     <div class="flex flex-row">
                                         <a href="{{ route('editproject', $project->id) }}"

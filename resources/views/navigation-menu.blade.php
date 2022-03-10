@@ -13,13 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('resindex') }}" :active="request()->routeIs('resindex')">
-                        {{ __('Les résponsibilités') }}
+                        {{ __('Mes résponsibilités') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('indexprojects') }}" :active="request()->routeIs('indexprojects')">
-                        {{ __('les projets') }}
+                        {{ __('Mes projets') }}
                     </x-jet-nav-link>
                     <x-jet-nav-link href="{{ route('today') }}" :active="request()->routeIs('today')">
-                        {{ __('les actions') }}
+                        {{ __('Mes actions') }}
                     </x-jet-nav-link>
                 </div>
 
@@ -159,10 +159,16 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('resindex') }}" :active="request()->routeIs('dashboard')">
-                {{ __('resindex') }}
-            </x-jet-responsive-nav-link>
+        <div class="pt-2 pb-3 space-y-1 flex flex-col">
+            <x-jet-nav-link href="{{ route('resindex') }}" :active="request()->routeIs('resindex')">
+                {{ __('Mes résponsibilités') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('indexprojects') }}" :active="request()->routeIs('indexprojects')">
+                {{ __('Mes projets') }}
+            </x-jet-nav-link>
+            <x-jet-nav-link href="{{ route('today') }}" :active="request()->routeIs('today')">
+                {{ __('Mes actions') }}
+            </x-jet-nav-link>
         </div>
 
         <!-- Responsive Settings Options -->

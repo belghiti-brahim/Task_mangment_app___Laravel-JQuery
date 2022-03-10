@@ -18,7 +18,7 @@
     </div>
 
     <main class="min-h-screen flex justify-center">
-        <div class="py-12 grid grid-cols-6">
+        <div class="py-12 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-6 xl:grid-cols-6">
             {{-- lundi --}}
             <div id="collectionl" class="sm:px-6 lg:px-8 flex flex-col gap-4">
                 <h1 class="hierarchyl3">Lundi</h1>
@@ -28,12 +28,14 @@
                         @forelse ($mondayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
                                                 class="w-4 h-4 hover:w-6 hover:h-6">
@@ -63,12 +65,14 @@
                         @forelse ($mondayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             <a href="{{ route('editaction', $action->id) }}" onclick=""
                                                 class="w-4 h-4 hover:w-8 hover:h-8">
@@ -100,11 +104,15 @@
                         @forelse ($tueasdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
+                                            <p style="color:{{ $action->project->responsibility->color }};"
+                                                class="py-1 w-full text-sm rounded outline-none">
+                                                #{{ $action->project->name }}<p>
                                         </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
@@ -136,11 +144,15 @@
                         @forelse ($tueasdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
+                                            <p style="color:{{ $action->project->responsibility->color }};"
+                                                class="py-1 w-full text-sm rounded outline-none">
+                                                #{{ $action->project->name }}<p>
                                         </a>
                                         <div class="flex flex-row">
                                             {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
@@ -176,12 +188,14 @@
                         @forelse ($wednesdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
                                                 class="w-4 h-4 hover:w-6 hover:h-6">
@@ -211,12 +225,14 @@
                         @forelse ($wednesdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
                                                 <img src="{{ asset('images/done.png') }}" alt="donebutton">
@@ -251,12 +267,14 @@
                         @forelse ($thursdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
                                                 class="w-4 h-4 hover:w-6 hover:h-6">
@@ -287,12 +305,14 @@
                         @forelse ($thursdayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             {{-- <a href="javascript:void(0)" onclick="" class="w-4 h-4 hover:w-8 hover:h-8">
                                                 <img src="{{ asset('images/done.png') }}" alt="donebutton">
@@ -327,12 +347,14 @@
                         @forelse ($fridayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
                                                 class="w-4 h-4 hover:w-6 hover:h-6">
@@ -362,12 +384,14 @@
                         @forelse ($fridayactions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                        outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
+                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                         class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                         <a href="">
                                             <p class="line-through text-sm">{{ $action->description }}</p>
-                                        </a>
+                                            <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                            </a>
                                         <div class="flex flex-row">
                                             <a href="{{ route('editaction', $action->id) }}" onclick=""
                                                 class="w-4 h-4 hover:w-8 hover:h-8">
@@ -400,12 +424,14 @@
                             @forelse ($saturdayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 1)
-                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        <div id="action{{ $action->id }}"
+                                            style="outline-style: solid;
+                                            outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                             class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="text-sm">{{ $action->description }}</p>
-                                            </a>
+                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                </a>
                                             <div class="flex flex-row">
                                                 <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
                                                     class="w-4 h-4 hover:w-6 hover:h-6">
@@ -437,12 +463,14 @@
                             @forelse ($saturdayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 3)
-                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        <div id="action{{ $action->id }}"
+                                            style="outline-style: solid;
+                                            outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                             class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="line-through text-sm">{{ $action->description }}</p>
-                                            </a>
+                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                </a>
                                             <div class="flex flex-row">
                                                 <a href="{{ route('editaction', $action->id) }}" onclick=""
                                                     class="w-4 h-4 hover:w-8 hover:h-8">
@@ -474,14 +502,17 @@
                             @forelse ($sundayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 1)
-                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        <div id="action{{ $action->id }}"
+                                            style="outline-style: solid;
+                                            outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                             class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="text-sm">{{ $action->description }}</p>
-                                            </a>
+                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                </a>
                                             <div class="flex flex-row">
-                                                <a href="javascript:void(0)" onclick="startAction({{ $action->id }})"
+                                                <a href="javascript:void(0)"
+                                                    onclick="startAction({{ $action->id }})"
                                                     class="w-4 h-4 hover:w-6 hover:h-6">
                                                     <img src="{{ asset('images/start.png') }}"
                                                         alt="start action button">
@@ -511,12 +542,14 @@
                             @forelse ($sundayactions as $action)
                                 @foreach ($action->contexts as $contextaction)
                                     @if ($contextaction->pivot->context_id == 3)
-                                        <div id="action{{ $action->id }}"  style="outline-style: solid;
-                                            outline-color: {{$action->project->responsibility->color}};  outline-width: medium;"
+                                        <div id="action{{ $action->id }}"
+                                            style="outline-style: solid;
+                                            outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                             class="px-6 py-1 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-col items-center justify-between gap-2">
                                             <a href="">
                                                 <p class="line-through text-sm">{{ $action->description }}</p>
-                                            </a>
+                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                </a>
                                             <div class="flex flex-row">
                                                 <a href="{{ route('editaction', $action->id) }}" onclick=""
                                                     class="w-4 h-4 hover:w-8 hover:h-8">

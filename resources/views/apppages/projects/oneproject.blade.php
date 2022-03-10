@@ -25,8 +25,8 @@
         </div> --}}
         <form action="{{ route('find') }}" method="GET">
             @csrf
-            <div class="px-12 flex flex-row items-end">
-                <div class="px-4 py-5 space-y-6 sm:p-6">
+            <div class="px-12 flex flex-col md:flex-row lg:flex-row items-start lg:items-end">
+                <div class="px-4 py-5 sm:p-6 ">
                     <div class="">
                         <div class="">
                             <label for="resonsibilityId" class="block text-sm font-medium text-gray-700">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="px-1 py-6 text-left sm:px-6 flex flex-row gap-4">
+                <div class="px-5 lg:px-1 py-2 lg:py-6 text-left flex flex-row gap-4">
                     <div class="">
                         <button type="submit" class="btn">chercher</button>
                     </div>
@@ -53,7 +53,7 @@
         <div class="ml-auto py-12 ">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="grid grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
 
                     @forelse ($foundprojects as $project)
                         <div id="project{{ $project->id }}"  style="outline-style: solid;

@@ -11,29 +11,10 @@
 </head>
 
 <body>
-    {{-- <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-        @if (Route::has('login'))
-            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-Catamaran text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                    @endif
-                @endauth
-            </div>
-        @endif
-    </div> --}}
     <header>
         <nav class="h-89 w-full border-b flex ">
             <div class="py-5 md:py-0 container mx-auto px-6 flex items-center justify-between">
-                <div class="flex items-center gap-3 w-32">
+                <div class="flex items-center gap-3 w-36">
                     <x-jet-authentication-card-logo />
                     <p class="font-Catamaran text-orange-400 font-extrabold text-3xl">Clarté</p>
                 </div>
@@ -42,8 +23,7 @@
                         <a href="{{ url('/responsibilite/index') }}" class="btn">Votre espace du travail</a>
                     @else
                         <div>
-                            <a href="{{ route('login') }}"
-                                class="btn">Login</a>
+                            <a href="{{ route('login') }}" class="btn">Login</a>
                         </div>
                     @endauth
                 @endif
@@ -53,9 +33,9 @@
     <main>
         <section
             style="background-image: url('{{ asset('images/hero2.jpg') }}'); background-size: cover;   background-repeat: no-repeat; background-position: center center;"
-            class="bg-gray-100 h-756">
+            class="bg-gray-100 h-756 mx-5">
             <div class="container mx-auto flex flex-col items-start gap-y-8 py-12 sm:py-24">
-                <div class=" lg:flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">
+                <div class="flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">
                     <h1 class="hierarchyl1">
                         Libérez votre espace mental.<br>
                         Organisez-vous efficacement,
@@ -63,7 +43,8 @@
                     </h1>
 
                     <p class="mt-5 sm:mt-10 lg:w-10/12 text-gray-400 font-normal text-left text-sm sm:text-lg">
-                        Avec la solution digitale "clarté".<br>  Ayez l'esprit tranquille en ajoutant toutes <br> vos tâches à votre nouvelle to-do list application préférée.</p>
+                        Avec la solution digitale "clarté".<br> Ayez l'esprit tranquille en ajoutant toutes <br> vos
+                        tâches à votre nouvelle to-do list application préférée.</p>
                 </div>
                 <div class="flex justify-center items-start">
                     <a href="{{ route('register') }}"
@@ -72,7 +53,7 @@
             </div>
         </section>
 
-        <section class="max-w-8xl mx-auto container bg-white pt-16">
+        <section class="max-w-8xl mx-auto container bg-white">
             <div>
                 <div role="contentinfo" class="flex items-center flex-col px-4">
                     <h1 tabindex="0" class="hierarchyl1">
@@ -86,8 +67,7 @@
                             <div class="absolute top-0 right-0 bg-sky-100 rounded w-16 h-16 mt-2 mr-1"></div>
                             <div
                                 class="absolute text-white bottom-0 left-0 bg-sky-600 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG1.svg"
-                                    alt="drawer">
+                                <img class="w-[2.5rem]"src="{{ asset('images/list-01.png') }}" alt="lists icon">
                             </div>
                         </div>
                         <div class="w-10/12">
@@ -105,13 +85,12 @@
                             <div class="absolute top-0 right-0 bg-sky-100 rounded w-16 h-16 mt-2 mr-1"></div>
                             <div
                                 class="absolute text-white bottom-0 left-0 bg-sky-600 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
-                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/icon_and_text-SVG2.svg"
-                                    alt="check">
+                                <img class="w-[3.5rem]" src="{{ asset('images/hierarchy-01.png') }}" alt="hierarchy">
                             </div>
                         </div>
                         <div class="w-10/12">
-                            <h2 tabindex="0"
-                                class="focus:outline-none text-lg font-bold leading-tight text-gray-800">Transformez
+                            <h2 tabindex="0" class="focus:outline-none text-lg font-bold leading-tight text-gray-800">
+                                Transformez
                                 une hiérarchie en liste de tâches</h2>
                             <p tabindex="0" class="focus:outline-none text-base text-gray-600 leading-normal pt-2">
                                 Une fois que vous avez ajouté des dates d'échéance, des contextes et des dépendances,
@@ -129,8 +108,8 @@
                             </div>
                         </div>
                         <div class="w-10/12">
-                            <h2 tabindex="0"
-                                class="focus:outline-none text-lg font-bold leading-tight text-gray-800">Faites-en
+                            <h2 tabindex="0" class="focus:outline-none text-lg font-bold leading-tight text-gray-800">
+                                Faites-en
                                 plus
                             </h2>
                             <p tabindex="0" class="focus:outline-none text-base text-gray-600 leading-normal pt-2">
@@ -149,8 +128,8 @@
                             </div>
                         </div>
                         <div class="w-10/12">
-                            <h2 tabindex="0"
-                                class="focus:outline-none text-lg font-bold leading-tight text-gray-800">Atteignez
+                            <h2 tabindex="0" class="focus:outline-none text-lg font-bold leading-tight text-gray-800">
+                                Atteignez
                                 vos objectifs
                             </h2>
                             <p tabindex="0" class="focus:outline-none text-base text-gray-600 leading-normal pt-2">

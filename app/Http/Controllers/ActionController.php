@@ -42,6 +42,7 @@ class ActionController extends Controller
         ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
         ->join('users', 'users.id', '=', 'responsibilities.user_id')
         ->where('user_id', $authid)
+        ->where('deadline', '=', $today)
         ->get();
 
         // $actions = $allactions->where('deadline', '=', $today);

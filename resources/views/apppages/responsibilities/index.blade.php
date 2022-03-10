@@ -15,10 +15,10 @@
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
     <main class="relative min-h-screen">
-        <div class="px-10 relative md:fixed md:w-2/5 min-h-screen in flex items-center justify-content">
-            <div class="flex flex-col">
-                <h1 class="pageContentTitle">Je suis</h1>
-                <p class="text-kramp-500">Les différents aspects de mon travail et de ma vie personnelle auxquels je
+        <div class="px-10 pt-8 relative md:fixed md:w-2/5 md:min-h-screen lg:min-h-screen flex items-center justify-content">
+            <div class="flex flex-col ">
+                <h1 class="pageContentTitle">Je suis:</h1>
+                <p class="hidden md:block">Les différents aspects de mon travail et de ma vie personnelle auxquels je
                     souhaite
                     consacrer
                     mon temps de manière équilibrée, en espérant obtenir de bons résultats dans chacun d'eux .</p>
@@ -33,9 +33,9 @@
                     @forelse ($responsibilities as $responsibility)
                         <div id="res{{ $responsibility->id }}" style="outline-style: solid;
                             outline-color: {{ $responsibility->color }};"
-                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full h-32 flex flex-row items-center justify-between">
+                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[6rem] flex flex-row items-center justify-between">
                             <a href="{{ route('showresponsibility', $responsibility->id) }}">
-                                <p class='hover:text-6xl modelTitle'>
+                                <p class=' hover:font-black modelTitle'>
                                     {{ $responsibility->name }}</p>
                             </a>
                             <div class="flex flex-row">
