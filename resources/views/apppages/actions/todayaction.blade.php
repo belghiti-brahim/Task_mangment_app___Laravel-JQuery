@@ -41,7 +41,7 @@
                                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between">
                                             <a href="">
                                                 <p class="">{{ $action->description }}</p>
-                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                <p  style="background-color:{{ $action->project->responsibility->color }}; color:white;" class="p-1 my-2 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
 
                                             </a>
                                             <div class="flex flex-row">

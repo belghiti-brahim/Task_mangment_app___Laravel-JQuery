@@ -74,7 +74,7 @@
                                     </select>
                                 </div>
                                 <div x-data
-                                    x-init="flatpickr($refs.datetimewidget, {wrap: true, enableTime: false, dateFormat: 'Y-m-d'});"
+                                    x-init="flatpickr($refs.datetimewidget, {wrap: true, enableTime: false, dateFormat: 'Y-m-d', locale:'fr'});"
                                     x-ref="datetimewidget"
                                     class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
                                     <label for="datetime"
