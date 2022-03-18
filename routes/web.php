@@ -66,5 +66,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::put('/startaction/{id}', [ActionController::class, 'changeActionStatusToDoing'])->name("startaction");
         Route::put('/doneaction/{id}', [ActionController::class, 'changeActionStatusToDone'])->name("doneaction");
         Route::get('createfromprojet/{id}', [ActionController::class, 'createfromproject'])->name("createfromproject");
+        Route::post('/storeaction', [ActionController::class, 'quickstore'])->name("directaction");
+
     });
 });

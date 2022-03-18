@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="h-89 w-full border-b flex ">
-            <div class="py-5 md:py-0 container mx-auto px-6 flex items-center justify-between">
+            <div class="py-5 md:py-0 container mx-auto px-4 flex items-center justify-between">
                 <div class="flex items-center gap-3 w-36">
                     <x-jet-authentication-card-logo />
                     <p class="font-Catamaran text-orange-400 font-extrabold text-3xl">Clarté</p>
@@ -23,18 +23,18 @@
                         <a href="{{ url('/responsibilite/index') }}" class="btn">Votre espace du travail</a>
                     @else
                         <div>
-                            <a href="{{ route('login') }}" class="btn">Login</a>
+                            <a href="{{ route('login') }}" class="btn">S'identifier</a>
                         </div>
                     @endauth
                 @endif
             </div>
         </nav>
     </header>
-    <main>
+    <main class="flex flex-col gap-8">
         <section
             style="background-image: url('{{ asset('images/hero2.jpg') }}'); background-size: cover;   background-repeat: no-repeat; background-position: center center;"
             class="bg-gray-100 h-756 mx-5">
-            <div class="container mx-auto flex flex-col items-start gap-y-8 py-12 sm:py-24">
+            <div class="container mx-auto flex flex-col items-start gap-y-8 py-4 sm:py-24 px-4">
                 <div class="flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">
                     <h1 class="hierarchyl1">
                         Libérez votre espace mental.<br>
@@ -53,13 +53,25 @@
             </div>
         </section>
 
+        <section class="max-w-8xl bg-white">
+            <div class="flex flex-col items-center gap-8">
+                <h1 class="text-base text-2xl text-sky-700">Une nouvelle approche à la TODO-list, simple, facile, utile :</h1>
+                <h1 class="font-Catamaran text-4xl text-center font-black text-gray-700 px-8 leading-[3rem]">
+                    Une personne à des <span class="text-orange-400">responsabilités </span>, étant l'une de ces
+                    responsabilités,
+                    elle initie des <span class="text-orange-400"> projets, </span>
+                    qu'elle complète
+                    en réalisant des <span class="text-orange-400"> actions.</span> </h1>
+            </div>
+        </section>
+
         <section class="max-w-8xl mx-auto container bg-white">
             <div>
-                <div role="contentinfo" class="flex items-center flex-col px-4">
+                {{-- <div role="contentinfo" class="flex items-center flex-col px-4">
                     <h1 tabindex="0" class="hierarchyl1">
                         L'application qui vous aide
                     </h1>
-                </div>
+                </div> --}}
                 <div tabindex="0" aria-label="group of cards"
                     class="focus:outline-none mt-20 flex flex-wrap justify-center gap-10 px-4">
                     <div tabindex="0" aria-label="card 1" class="focus:outline-none flex sm:w-full md:w-5/12 pb-20">
@@ -67,7 +79,7 @@
                             <div class="absolute top-0 right-0 bg-sky-100 rounded w-16 h-16 mt-2 mr-1"></div>
                             <div
                                 class="absolute text-white bottom-0 left-0 bg-sky-600 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
-                                <img class="w-[2.5rem]"src="{{ asset('images/list-01.png') }}" alt="lists icon">
+                                <img class="w-[2.5rem]" src="{{ asset('images/list-01.png') }}" alt="lists icon">
                             </div>
                         </div>
                         <div class="w-10/12">
@@ -85,7 +97,8 @@
                             <div class="absolute top-0 right-0 bg-sky-100 rounded w-16 h-16 mt-2 mr-1"></div>
                             <div
                                 class="absolute text-white bottom-0 left-0 bg-sky-600 rounded w-16 h-16 flex items-center justify-center mt-2 mr-3">
-                                <img class="w-[3.5rem]" src="{{ asset('images/hierarchy-01.png') }}" alt="hierarchy">
+                                <img class="w-[3.5rem]" src="{{ asset('images/hierarchy-01.png') }}"
+                                    alt="hierarchy">
                             </div>
                         </div>
                         <div class="w-10/12">
@@ -140,9 +153,6 @@
                 </div>
             </div>
         </section>
-
-
-
     </main>
     <!-- component -->
     <footer class="w-full  flex items-center justify-center bg-gray-800">

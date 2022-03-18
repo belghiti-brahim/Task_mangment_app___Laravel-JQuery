@@ -44,9 +44,14 @@ class ActionController extends Controller
         ->where('user_id', $authid)
         ->where('deadline', '=', $today)
         ->get();
+        $projects = Project::select('projects.*')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->get();
 
         // $actions = $allactions->where('deadline', '=', $today);
-        return view('apppages.actions.todayaction', compact("today", "actions"));
+        return view('apppages.actions.todayaction', compact("today", "actions","projects"));
     }
     public function week()
     {
@@ -145,6 +150,29 @@ class ActionController extends Controller
         $newaction->contexts()->attach($status);
         $projectid = $request->project;
         return redirect()->route('showproject',  $projectid)->with('message', 'ton action a été créée avec succès');
+    }
+
+    public function quickstore(Request $request)
+    {
+
+        $this->validate($request, [
+
+            'description' => 'required',
+            'project' => 'required',
+        ]);
+        $todayy = Carbon::today()->toDateString();
+        $status = 1;
+        // $deadline = carbon::parse($request->deadline)->format('Y-m-d');
+        $newaction = Action::create([
+            'description' => $request->description,
+            'definition_of_done' => "to edit later",
+            'project_id' => $request->project,
+            'deadline' =>$todayy,
+        ]);
+
+        $newaction->contexts()->attach($status);
+        // $projectid = $request->project;
+        return redirect()->route('today')->with('message', 'ton action a été créée avec succès');
     }
 
     public function changeActionStatusToDoing($id)

@@ -5,7 +5,7 @@
             {{ __("Aujourd'hui") }}
         </x-jet-nav-link>
         <x-jet-nav-link href="{{ route('week') }}" :active="request()->routeIs('week')">
-            {{ __('cette semaine') }}
+            {{ __('Cette semaine') }}
         </x-jet-nav-link>
         {{-- <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
             {{ __('Toutes les actions') }}
@@ -23,6 +23,55 @@
     @endif
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
+
+    <div class="my-4 flex items-center justify-center">
+        <form action="{{ route('directaction') }}" method="POST">
+            @csrf
+            <div class="shadow sm:rounded-md sm:overflow-hidden">
+                <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                    @if ($errors->any())
+                        <div class="bg-red-600 text-white">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>* {{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="col-span-3 sm:col-span-2">
+                            <label for="actionId" class="block text-sm font-medium text-gray-700">
+                                Déscription de l'action
+                            </label>
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <span
+                                    class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
+                                    faire: </span>
+                                <input type="text" name="description" id="actionId"
+                                    class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="project" class="block text-sm font-medium text-gray-700">Projet</label>
+                        <select id="project" name="project" autocomplete="color-name"
+                            class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
+                            @forelse ($projects as $project)
+                                <option value={{ $project->id }}>{{ $project->name }}</option>
+                            @empty
+                                <option value="">Il n'y a aucun projet</option>
+                            @endforelse
+                        </select>
+                    </div>
+
+                </div>
+                <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                    <button type="submit" class="btn">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
     <main class="relative min-h-screen">
         <div class="ml-auto py-12">
             <div id="collection" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -38,10 +87,12 @@
                                         <div id="action{{ $action->id }}"
                                             style="outline-style: solid;
                                         outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
-                                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between">
+                                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between"p>
                                             <a href="">
                                                 <p class="">{{ $action->description }}</p>
-                                                <p  style="background-color:{{ $action->project->responsibility->color }}; color:white;" class="p-1 my-2 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                <p style="color:{{ $action->project->responsibility->color }}"
+                                                    class="p-1 my-2 w-full text-sm rounded outline-none">
+                                                    #{{ $action->project->name }}<p>
 
                                             </a>
                                             <div class="flex flex-row">
@@ -82,7 +133,9 @@
                                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between">
                                             <a href="">
                                                 <p class="">{{ $action->description }}</p>
-                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                <p style="color:{{ $action->project->responsibility->color }};"
+                                                    class="py-1 w-full text-sm rounded outline-none">
+                                                    #{{ $action->project->name }}<p>
                                             </a>
                                             <div class="flex flex-row">
                                                 <a href="javascript:void(0)" onclick="doneAction({{ $action->id }})"
@@ -121,7 +174,9 @@
                                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between">
                                             <a href="">
                                                 <p class="line-through">{{ $action->description }}</p>
-                                                <p  style="color:{{ $action->project->responsibility->color }};" class="py-1 w-full text-sm rounded outline-none">#{{ $action->project->name}}<p>
+                                                <p style="color:{{ $action->project->responsibility->color }};"
+                                                    class="py-1 w-full text-sm rounded outline-none">
+                                                    #{{ $action->project->name }}<p>
 
                                             </a>
                                             <div class="flex flex-row">

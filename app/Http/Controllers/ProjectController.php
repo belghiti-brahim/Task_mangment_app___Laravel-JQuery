@@ -25,7 +25,7 @@ class ProjectController extends Controller
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid);
 
-        $projects = $projectss->with("actions")->paginate(12);
+        $projects = $projectss->with("actions")->paginate(9);
         return view('apppages.projects.indexproject', compact("projects"));
     }
 

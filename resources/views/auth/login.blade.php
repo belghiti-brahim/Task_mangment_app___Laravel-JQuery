@@ -45,7 +45,7 @@
                 @endif
 
                 <x-jet-button class="ml-4 btn">
-                    {{ __("S'indetifier") }}
+                    {{ __("S'identifier") }}
                 </x-jet-button>
             </div>
         </form>
