@@ -33,8 +33,8 @@
     <main class="flex flex-col gap-8">
         <section
             style="background-image: url('{{ asset('images/hero2.jpg') }}'); background-size: cover;   background-repeat: no-repeat; background-position: center center;"
-            class="bg-gray-100 h-756 mx-5">
-            <div class="container mx-auto flex flex-col items-start gap-y-8 py-4 sm:py-24 px-4">
+            class="bg-gray-100 h-[667px] mx-5 flex flex-col items-start justify-evenly gap-4">
+            <div class="container mx-auto px-4 flex flex-col items-start">
                 <div class="flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">
                     <h1 class="hierarchyl1">
                         Libérez votre espace mental.<br>
@@ -54,7 +54,7 @@
         </section>
 
         <section class="max-w-8xl bg-white">
-            <div class="flex flex-col items-center gap-8">
+            <div class="flex flex-col items-center justify-evenly gap-8">
                 <h1 class="text-base text-2xl text-sky-700">Une nouvelle approche à la TODO-list, simple, facile, utile :</h1>
                 <h1 class="font-Catamaran text-4xl text-center font-black text-gray-700 px-8 leading-[3rem]">
                     Une personne à des <span class="text-orange-400">responsabilités </span>, étant l'une de ces

@@ -68,9 +68,9 @@
                                     <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
                                     <select id="status" name="status" autocomplete="status"
                                         class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
-                                        <option value=1>TODO</option>
-                                        <option value=2>DOING</option>
-                                        <option value=3>DONE</option>
+                                        <option value=1>À faire</option>
+                                        <option value=2>En cours</option>
+                                        <option value=3>Fait</option>
                                     </select>
                                 </div>
                                 <div x-data

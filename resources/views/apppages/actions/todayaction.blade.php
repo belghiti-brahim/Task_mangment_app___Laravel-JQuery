@@ -10,9 +10,13 @@
         {{-- <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
             {{ __('Toutes les actions') }}
         </x-jet-nav-link> --}}
-        <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
+        {{-- <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
             {{ __('Ajouter une action') }}
-        </x-jet-nav-link>
+        </x-jet-nav-link> --}}
+        <a href="javascript:void(0)" onclick="showForm()"
+            class='inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-1xl font-Catamaran font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-sky-600 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition'>Ajouter
+            une action</a>
+
     </x-slot>
 
     @if (session('message'))
@@ -24,7 +28,7 @@
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
 
-    <div class="my-4 flex items-center justify-center">
+    <div id="actionform" class="hidden my-4 flex items-center justify-center">
         <form action="{{ route('directaction') }}" method="POST">
             @csrf
             <div class="shadow sm:rounded-md sm:overflow-hidden">
@@ -58,7 +62,9 @@
                         <select id="project" name="project" autocomplete="color-name"
                             class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm">
                             @forelse ($projects as $project)
-                                <option value={{ $project->id }}>{{ $project->name }}</option>
+                                @if ($project->archive === 1)
+                                    <option value={{ $project->id }}>{{ $project->name }}</option>
+                                @endif
                             @empty
                                 <option value="">Il n'y a aucun projet</option>
                             @endforelse
@@ -72,6 +78,7 @@
             </div>
         </form>
     </div>
+
     <main class="relative min-h-screen">
         <div class="ml-auto py-12">
             <div id="collection" class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -86,8 +93,9 @@
                                     @if ($contextaction->pivot->context_id == 1)
                                         <div id="action{{ $action->id }}"
                                             style="outline-style: solid;
-                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
-                                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between"p>
+                                                outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
+                                            class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between"
+                                            p>
                                             <a href="">
                                                 <p class="">{{ $action->description }}</p>
                                                 <p style="color:{{ $action->project->responsibility->color }}"
@@ -129,7 +137,7 @@
                                     @if ($contextaction->pivot->context_id == 2)
                                         <div id="action{{ $action->id }}"
                                             style="outline-style: solid;
-                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
+                                                outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between">
                                             <a href="">
                                                 <p class="">{{ $action->description }}</p>
@@ -170,7 +178,7 @@
                                     @if ($contextaction->pivot->context_id == 3)
                                         <div id="action{{ $action->id }}"
                                             style="outline-style: solid;
-                                        outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
+                                                outline-color: {{ $action->project->responsibility->color }};  outline-width: medium;"
                                             class="px-10 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full min-h-[2rem] flex flex-row items-center justify-between">
                                             <a href="">
                                                 <p class="line-through">{{ $action->description }}</p>

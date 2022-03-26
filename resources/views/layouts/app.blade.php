@@ -17,6 +17,7 @@
         [x-cloak] {
             display: none;
         }
+
     </style>
     @livewireStyles
 
@@ -197,12 +198,17 @@
 
             })
         }
+
+        function showForm() {
+            console.log("hhh")
+            $('#actionform').toggle();
+        }
     </script>
     <script>
         function app() {
             return {
                 isOpen: false,
-                colors: ['#F87171', '#FB923C', '#FFEB3B', '#A3E635', '#4CAF50',  '#2DD4BF', '#60A5FA','#C084FC', '#F472B6'],
+                colors: ['#F87171', '#FB923C', '#FFEB3B', '#A3E635', '#4CAF50', '#2DD4BF', '#60A5FA', '#C084FC', '#F472B6'],
                 colorSelected: '#F87171'
             }
         }

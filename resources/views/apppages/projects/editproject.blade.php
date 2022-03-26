@@ -77,8 +77,14 @@
                                         <option value={{ $project->responsibility->id }}>
                                             {{ old('responsibility', $project->responsibility->name) }}
                                             @forelse ($responsibilities as $responsibility)
+                                                @if ($responsibility->name === $project->responsibility->name)
+                                        <option class="hidden" value={{ $responsibility->id }}>
+                                            {{ $responsibility->name }}
+                                        </option>
+                                    @else
                                         <option value={{ $responsibility->id }}>{{ $responsibility->name }}
                                         </option>
+                                        @endif
                                     @empty
                                         <option>tu n'a aucun résponsibilité creé.</option>
                                         @endforelse
@@ -93,7 +99,8 @@
                                         @if ($project->parent == null)
                                             <option value="">aucun</option>
                                         @else
-                                            <option value="{{ $project->parent->id }}">{{ $project->parent->name }}
+                                            <option value="{{ $project->parent->id }}">
+                                                {{ $project->parent->name }}
                                             </option>
                                             <option value="">aucun</option>
                                         @endif
@@ -103,13 +110,17 @@
                                                     <option class="hidden" value={{ $projects->id }}>
                                                         {{ $projects->name }}
                                                     @else
+                                                        @if ($projects->archive === 0)
+                                                    <option class="hidden" value={{ $projects->id }}>
+                                                        {{ $projects->name }}
+                                                    @else
                                                     <option value={{ $projects->id }}>{{ $projects->name }}
                                                     </option>
-                                                    
                                                 @endif
-                                            @empty
-                                            @endforelse
+                                            @endif
                                         @empty
+                                        @endforelse
+                                    @empty
                                         <option>tu n'a aucun projet creé.</option>
                                         @endforelse
                                     </select>

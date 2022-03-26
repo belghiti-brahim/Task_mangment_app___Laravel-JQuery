@@ -9,9 +9,9 @@
         {{-- <x-jet-nav-link href="{{ route('indexactions') }}" :active="request()->routeIs('indexactions')">
             {{ __('Toutes les actions') }}
         </x-jet-nav-link> --}}
-        <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
+        {{-- <x-jet-nav-link href="{{ route('creataction') }}" :active="request()->routeIs('creataction')">
             {{ __('Ajouter une action') }}
-        </x-jet-nav-link>
+        </x-jet-nav-link> --}}
     </x-slot>
 
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">

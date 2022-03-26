@@ -59,8 +59,13 @@
                                         <option value={{ $action->project->id }}>
                                             {{ old('project', $action->project->name) }}</option>
                                         @forelse ($projects as $project)
-                                            <option value={{ $project->id }}>{{ $project->name }}</option>
-
+                                            @if ($project->archive === 0 || $project->name === $action->project->name)
+                                                <option class="hidden" value={{ $project->id }}>
+                                                    {{ $project->name }}
+                                                @else
+                                                <option value={{ $project->id }}>{{ $project->name }}
+                                                </option>
+                                            @endif
                                         @empty
                                             <option>Il n'y a aucun projet</option>
                                         @endforelse
@@ -76,7 +81,7 @@
                                                 <option value=1>TODO</option>
                                                 <option value=2>DOING</option>
                                                 <option value=3>DONE</option>
-                                            @elseif ($context->id  === 2)
+                                            @elseif ($context->id === 2)
                                                 <option value=2>DOING</option>
                                                 <option value=1>TODO</option>
                                                 <option value=3>DONE</option>
@@ -88,9 +93,7 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div x-data
-                                    x-init="flatpickr($refs.datetimewidget, {wrap: true, enableTime: false, dateFormat: 'Y-m-d', locale:'fr'});"
-                                    x-ref="datetimewidget"
+                                <div x-data x-init="flatpickr($refs.datetimewidget, { wrap: true, enableTime: false, dateFormat: 'Y-m-d', locale: 'fr' });" x-ref="datetimewidget"
                                     class="flatpickr container mx-auto col-span-6 sm:col-span-6 mt-5">
                                     <label for="datetime"
                                         class="flex-grow  block font-medium text-sm text-gray-700 mb-1">date d'échéance
@@ -121,11 +124,5 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
 </x-app-layout>
