@@ -52,7 +52,7 @@
                                             <span
                                                 class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-700 text-sm">
                                                 Nom du projet: </span>
-                                            <input type="text" name="name" id="projectId"
+                                            <input type="text" name="name" id="projectId" value="{{old('name')}}"
                                                 class="focus:ring-sky-500 focus:border-sky-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                                 placeholder="etudiant/directeur/freelancer...">
                                         </div>
@@ -65,7 +65,7 @@
                                     <div class="mt-1">
                                         <textarea id="about" name="description" rows="3"
                                             class="shadow-sm focus:ring-sky-500 focus:border-sky-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
-                                            placeholder="..."></textarea>
+                                            placeholder="...">{{old('description')}}</textarea>
                                     </div>
                                 </div>
 
