@@ -26,7 +26,7 @@
         <div class="px-10 pt-8 relative md:fixed md:w-4/12 md:min-h-screen lg:min-h-screen flex items-center justify-content">
             <div class="flex flex-col">
                 <h1 class="pageContentTitle">Pour réaliser le projet
-                    <span class="italic font-light">** {{ $project->name }} ** </span>
+                    <span class="italic font-light">** {{ $project->name }} ** </span> J'effectue ces actions:
                 </h1>
                 <p class="hidden md:block">Les actions à effectuer à une date ou une heure spécifique vont dans le
                     Calendrier.

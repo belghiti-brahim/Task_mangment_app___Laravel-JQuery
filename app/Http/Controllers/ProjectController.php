@@ -38,8 +38,13 @@ class ProjectController extends Controller
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
-        $foundprojects = $projects->where('archive', '=', "1")->where('name', '=', $projectname);
-        return view('apppages.projects.oneproject', compact("foundprojects", "projects"));
+            foreach ($projects as $project){
+                $foundprojects = $project->where('archive', '=', "1")->where('name', 'like', "%$projectname%")->get();
+            }
+   
+            // dd($foundprojects);
+        // $foundprojects = $projects->where('archive', '=', "1")->where('name', '=', $projectname);
+        return view('apppages.projects.oneproject', compact("foundprojects", "projects","authid"));
     }
 
     public function searcharchive(request $request)
@@ -51,8 +56,18 @@ class ProjectController extends Controller
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
-        $foundprojects = $projects->where('archive', '=', "0")->where('name', '=', $projectname);
-        return view('apppages.projects.foundarchiveprojects', compact("foundprojects", "projects"));
+            // dd($projects);
+            foreach ($projects as $project){
+                            
+               $foundprojects = $project->where('archive', '=', "0")->where('name', 'like', "%$projectname%")->get();
+            }
+            
+            
+        // $foundprojects = $projects->where('archive', '=', "0")->where('name', '=', $projectname);
+        // $foundprojects = $projects->where('archive', '=', "0")->where('name', 'like', "%$projectname%");
+        // $foundprojects =Project::where('archive', '=', "0")->where('name', 'like',"%$projectname%")->get();
+        
+        return view('apppages.projects.foundarchiveprojects', compact("foundprojects", "projects", "authid"));
     }
 
 
