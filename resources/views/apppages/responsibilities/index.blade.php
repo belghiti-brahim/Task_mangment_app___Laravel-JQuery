@@ -5,7 +5,6 @@
             {{ __('Définir une résponsabilité') }}
         </x-jet-nav-link>
     </x-slot>
-
     @if (session('message'))
         <div class="flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3" x-data="{ show: true }"
             x-show="show" x-init="setTimeout(() => show = false, 1500)">
@@ -15,7 +14,8 @@
     <div id="deletemessage" class="hidden flex items-center bg-lime-500 text-white text-sm font-bold px-4 py-3">
     </div>
     <main class="relative min-h-screen">
-        <div class="px-10 pt-8 relative md:fixed md:w-2/5 md:min-h-screen lg:min-h-screen flex items-center justify-content">
+        <div
+            class="px-10 pt-8 relative md:fixed md:w-2/5 md:min-h-screen lg:min-h-screen flex items-center justify-content">
             <div class="flex flex-col ">
                 <h1 class="pageContentTitle">Je suis:</h1>
                 <p class="hidden md:block">Les différents aspects de mon travail et de ma vie personnelle auxquels je
@@ -26,10 +26,7 @@
         </div>
         <div class="md:w-3/5 ml-auto py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
                 <div class="flex flex-col items-center justify-center gap-6">
-                    {{-- {{ dd($responsibilities) }} --}}
-
                     @forelse ($responsibilities as $responsibility)
                         <div id="res{{ $responsibility->id }}" style="outline-style: solid;
                             outline-color: {{ $responsibility->color }};"
@@ -58,9 +55,6 @@
                 </div>
             </div>
         </div>
-
     </main>
-
-
     </div>
 </x-app-layout>

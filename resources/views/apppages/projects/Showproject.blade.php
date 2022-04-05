@@ -1,13 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        {{-- <x-jet-nav-link href="{{ route('createresponsability') }}"
-            :active="request()->routeIs('createresponsability')">
-            {{ __('Créer une résponsabilité') }}
-        </x-jet-nav-link>
-        <x-jet-nav-link href="{{ route('createproject') }}" :active="request()->routeIs('createproject')">
-            {{ __('Créer un projet') }}
-        </x-jet-nav-link> --}}
-        <x-jet-nav-link href="{{ route('createfromproject', $project->id) }}" :active="request()->routeIs('creataction')">
+        <x-jet-nav-link href="{{ route('createfromproject', $project->id) }}"
+            :active="request()->routeIs('createfromproject')">
             {{ __('Ajouter une action') }}
         </x-jet-nav-link>
     </x-slot>
@@ -23,7 +17,8 @@
 
 
     <main class="relative min-h-screen">
-        <div class="px-10 pt-8 relative md:fixed md:w-4/12 md:min-h-screen lg:min-h-screen flex items-center justify-content">
+        <div
+            class="px-10 pt-8 relative md:fixed md:w-4/12 md:min-h-screen lg:min-h-screen flex items-center justify-content">
             <div class="flex flex-col">
                 <h1 class="pageContentTitle">Pour réaliser le projet
                     <span class="italic font-light">** {{ $project->name }} ** </span> J'effectue ces actions:
@@ -41,7 +36,8 @@
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 1)
-                                    <div id="action{{ $action->id }}" style="outline-style: solid;
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
                                         outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
                                         class="px-4 py-2 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
@@ -76,7 +72,8 @@
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 2)
-                                    <div id="action{{ $action->id }}" style="outline-style: solid;
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
                                         outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
                                         class="px-4 py-2 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">
@@ -112,7 +109,8 @@
                         @forelse ($actions as $action)
                             @foreach ($action->contexts as $contextaction)
                                 @if ($contextaction->pivot->context_id == 3)
-                                    <div id="action{{ $action->id }}" style="outline-style: solid;
+                                    <div id="action{{ $action->id }}"
+                                        style="outline-style: solid;
                                         outline-color: {{ $project->responsibility->color }};  outline-width: medium;"
                                         class="px-4 py-2 bg-white overflow-hidden shadow-xl sm:rounded-lg min-w-full flex flex-row items-center justify-between">
                                         <a href="">

@@ -48,20 +48,15 @@ class ResponsibilityController extends Controller
 
         ]);
 
-        // if ($request->color == "emerald") {
-        //     $responsibilitycolor = "#50c878";
-        // } else {
-        //     $responsibilitycolor =  $request->color;
-        // }
         $responsibilitycolor =  $request->color;
-        // dd($responsibilitycolor);
+
         Responsibility::create([
             'name' => $request->name,
             'description' => $request->description,
             'user_id' => $userid,
             'color' => $responsibilitycolor
         ]);
-        $responsibilities = Responsibility::all();
+
         return redirect()->route('resindex')->with('message', 'Ta nouvelle responsabilité a été crée avec succès');
     }
 
@@ -74,30 +69,8 @@ class ResponsibilityController extends Controller
     public function show($id)
     {
         $responsibility = Responsibility::find($id);
-        // $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->get();
         $projects = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->whereNull('project_id')->orderBy('archive', 'desc')->orderBy('created_at', 'desc')->paginate(8);
-        // $projectss = Project::with("responsibility")->where("responsibility_id", "=", "$id")->with("children")->paginate(5);
-        // foreach ($projectss as $Project){
-        //    foreach($Project->actions as $action){
-        //        foreach($action->contexts as $context){
-        //            dd($context->pivot->where("context_id", "=", '3')->count());
-        //        };
-        //    };
-        // }
-
-        // $projects = Project::with("children")->whereNull('project_id')->get();
-        // $Projects = Project::with("children")->get();
-
-        // $subprojects = $Projects->with('children')->get();
-        // foreach ($Projects as $Project) {
-        //     return $subprojects = $Project->with('children')->get();
-        // }
-        // $subprojects = Project::with("parent")->get();
-        // $subprojects = Project::whereNull('project_id')->get();
-        // $subprojects = Project::where('project_id','!=', "null")->get();
-        // $subprojects = $projects->where('project_id','!=', "null");
-
-        // dd($projects);
+        
         return view("apppages.responsibilities.showresponsibility", compact("responsibility", "projects"));
     }
 

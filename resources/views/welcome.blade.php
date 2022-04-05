@@ -7,6 +7,22 @@
 
     <title>clarte</title>
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <style>
+        #heroSection {
+            background-image: url('{{ asset('images/hero2.jpg') }}');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+        @media screen and (max-width:600px) {
+            #heroSection {
+                background-size: auto;
+                background-position: left;
+            }
+        }
+
+    </style>
 
 </head>
 
@@ -32,7 +48,7 @@
     </header>
     <main class="flex flex-col gap-8">
         <section
-            style="background-image: url('{{ asset('images/hero2.jpg') }}'); background-size: cover;   background-repeat: no-repeat; background-position: center center;"
+           id ="heroSection"
             class="bg-gray-100 h-[667px] mx-5 flex flex-col items-start justify-evenly gap-4">
             <div class="container mx-auto px-4 flex flex-col items-start">
                 <div class="flex justify-start items-start flex-col gap-y-4 mb-5 sm:mb-10">

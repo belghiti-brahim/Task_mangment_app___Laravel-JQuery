@@ -25,9 +25,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::prefix('responsibilite')->group(function () {
-        // Route::get('/dashboard', function () {
-        //     return view('dashboard');
-        // })->name('dashboard');
+
         Route::get('/create', [ResponsibilityController::class, "create"])->name('createresponsability');
         Route::get('/index', [ResponsibilityController::class, "index"])->name("resindex");
         Route::post('/store', [ResponsibilityController::class, 'store'])->name("storeresponsibility");
@@ -45,13 +43,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::delete('/delete/{id}', [ProjectController::class, 'destroy'])->name("deleteproject");
         Route::get('/edit/{id}', [ProjectController::class, 'edit'])->name("editproject");
         Route::put('/update/{id}', [ProjectController::class, 'update'])->name("updateproject");
-        Route::get('/search', [ProjectController::class, 'searchactive'])->name("find");
-        Route::get('/searcharchive', [ProjectController::class, 'searcharchive'])->name("searcharchive");
+        Route::get('/search', [ProjectController::class, 'searchActiveProjects'])->name("find");
+        Route::get('/searcharchive', [ProjectController::class, 'searchArchiveProjects'])->name("searcharchive");
         Route::put('/archive/{id}', [ProjectController::class, 'archive'])->name("archive");
         Route::get('/archivedprojects', [ProjectController::class, "archived"])->name("archivedprojects");
-        Route::get('createaction/{id}',[ProjectController::class,"createwithinresponsibility"])->name("createprojectfromresponsibility");
-
-
+        Route::get('createaction/{id}', [ProjectController::class, "createwithinresponsibility"])->name("createprojectfromresponsibility");
     });
 
     Route::prefix('actions')->group(function () {
@@ -67,6 +63,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::put('/doneaction/{id}', [ActionController::class, 'changeActionStatusToDone'])->name("doneaction");
         Route::get('createfromprojet/{id}', [ActionController::class, 'createfromproject'])->name("createfromproject");
         Route::post('/storedirectaction', [ActionController::class, 'quickstore'])->name("directaction");
-
     });
 });

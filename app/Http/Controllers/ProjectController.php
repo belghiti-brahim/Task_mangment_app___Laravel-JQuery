@@ -29,7 +29,7 @@ class ProjectController extends Controller
         return view('apppages.projects.indexproject', compact("projects"));
     }
 
-    public function searchactive(request $request)
+    public function searchActiveProjects(request $request)
     {
         $authid = Auth::user()->id;
         $projectname = $request->input('findproject');
@@ -38,16 +38,14 @@ class ProjectController extends Controller
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
-            foreach ($projects as $project){
-                $foundprojects = $project->where('archive', '=', "1")->where('name', 'like', "%$projectname%")->get();
-            }
-   
-            // dd($foundprojects);
-        // $foundprojects = $projects->where('archive', '=', "1")->where('name', '=', $projectname);
-        return view('apppages.projects.oneproject', compact("foundprojects", "projects","authid"));
+        foreach ($projects as $project) {
+            $foundprojects = $project->where('archive', '=', "1")->where('name', 'like', "%$projectname%")->get();
+        }
+
+        return view('apppages.projects.oneproject', compact("foundprojects", "projects", "authid"));
     }
 
-    public function searcharchive(request $request)
+    public function searchArchiveProjects(request $request)
     {
         $authid = Auth::user()->id;
         $projectname = $request->input('findproject');
@@ -56,17 +54,11 @@ class ProjectController extends Controller
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
-            // dd($projects);
-            foreach ($projects as $project){
-                            
-               $foundprojects = $project->where('archive', '=', "0")->where('name', 'like', "%$projectname%")->get();
-            }
-            
-            
-        // $foundprojects = $projects->where('archive', '=', "0")->where('name', '=', $projectname);
-        // $foundprojects = $projects->where('archive', '=', "0")->where('name', 'like', "%$projectname%");
-        // $foundprojects =Project::where('archive', '=', "0")->where('name', 'like',"%$projectname%")->get();
-        
+        foreach ($projects as $project) {
+
+            $foundprojects = $project->where('archive', '=', "0")->where('name', 'like', "%$projectname%")->get();
+        }
+
         return view('apppages.projects.foundarchiveprojects', compact("foundprojects", "projects", "authid"));
     }
 
@@ -100,9 +92,8 @@ class ProjectController extends Controller
 
     public function createwithinresponsibility($id)
     {
-        $responsibilities = Responsibility::where('id','=', $id)->get();
-        // dd($responsibility);
-        // dd($id);
+        $responsibilities = Responsibility::where('id', '=', $id)->get();
+       
         return view('apppages.projects.createproject', compact("responsibilities"));
     }
 
@@ -115,7 +106,6 @@ class ProjectController extends Controller
     {
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
-        // $responsibilities = Responsibility::all();
 
         return view("apppages.projects.createproject", compact("responsibilities"));
     }
@@ -134,7 +124,6 @@ class ProjectController extends Controller
             'description' => 'required',
             'responsibility' => 'required',
         ]);
-        //   dd($request);
 
         if ($request->project === "undefined") {
             $projectId = null;
@@ -149,14 +138,13 @@ class ProjectController extends Controller
             'project_id' => $projectId
         ]);
 
-        // dd($request->responsibility);
+
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $responsibilityid = $request->responsibility;
-        //  dd($responsibilities);
+
 
         return redirect()->route('showresponsibility', $responsibilityid)->with('message', 'Ton projet a été crée avec succès');
-        // return view('apppages.responsibilities.index', compact("responsibilities"));
     }
 
     /**
@@ -168,10 +156,7 @@ class ProjectController extends Controller
     public function show($id)
     {
         $project = Project::find($id);
-        // $actions = Action::with("project")->where("project_id", "=", "$id")->get();
         $actions = Action::with("contexts")->with("project")->where("project_id", "=", "$id")->get();
-        // $action = $actions->pivot;
-        // dd($actions); 
 
         return view("apppages.projects.showproject", compact("project", "actions"));
     }
@@ -191,10 +176,8 @@ class ProjectController extends Controller
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $oldresponsibility = Responsibility::where("id", "=", "$project_id")->get();
-        // dd($oldresponsibility);
-        //    $parent = $project->with("parent")->get();
-        //    dd($parent);
         $projects = Project::where("project_id", "=", null)->get();
+
         return view("apppages.projects.editproject", compact("responsibilities", "project", "projects", "oldresponsibility"));
     }
 
@@ -209,12 +192,11 @@ class ProjectController extends Controller
     {
 
         $this->validate($request, [
-
             'name' => 'required',
             'description' => 'required',
             'responsibility' => 'required',
         ]);
-        //   dd($request);
+
 
         if ($request->project === "undefined") {
             $projectId = null;
@@ -228,12 +210,10 @@ class ProjectController extends Controller
         $project->responsibility_id = $request->responsibility;
         $project->project_id = $projectId;
         $project->save();
-        // return redirect()->route('resindex')->with('message', 'Ton projet a été modifié avec succès');
 
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
         $responsibilityid = $request->responsibility;
-        //  dd($responsibilities);
 
         return redirect()->route('showresponsibility', $responsibilityid)->with('message', 'Ton projet a été modifié avec succès');
     }

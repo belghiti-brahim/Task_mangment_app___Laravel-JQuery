@@ -22,6 +22,7 @@ class ActionController extends Controller
         $today = Carbon::today()->toFormattedDateString();
         $weeknumber = Carbon::today()->week();
         $actions = Action::all();
+
         return view('apppages.actions.indexactions', compact("actions", "today"));
     }
     public function today()
@@ -30,39 +31,28 @@ class ActionController extends Controller
         $allactions = Action::all();
         $authid = Auth::user()->id;
         $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->paginate(6);
-        // foreach ($responsibilities as $responsibility) {
-        //     $projects =  $responsibility->projects;
-        //     // foreach($projects as $project){
-        //     //     $actions = $project->actions->where('deadline', '=', $today);
-        //     //     // dd($actions);
-        //     // }
-        // };
+
         $actions = Action::select('actions.*')
-        ->join('projects', 'projects.id', '=', 'actions.project_id')
-        ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
-        ->join('users', 'users.id', '=', 'responsibilities.user_id')
-        ->where('user_id', $authid)
-        ->where('deadline', '=', $today)
-        ->get();
+            ->join('projects', 'projects.id', '=', 'actions.project_id')
+            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
+            ->join('users', 'users.id', '=', 'responsibilities.user_id')
+            ->where('user_id', $authid)
+            ->where('deadline', '=', $today)
+            ->get();
         $projects = Project::select('projects.*')
             ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
 
-        // $actions = $allactions->where('deadline', '=', $today);
-        return view('apppages.actions.todayaction', compact("today", "actions","projects"));
+        return view('apppages.actions.todayaction', compact("today", "actions", "projects"));
     }
     public function week()
     {
         $today = Carbon::today();
         $todayy = Carbon::today()->toDateString();
         $weeknumber = Carbon::today()->week();
-        // $actions = Action::select("*")
-        //     ->whereBetween(
-        //         'deadline',
-        //         [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()]
-        //     )->get();
+
         $authid = Auth::user()->id;
         $actions = Action::select('actions.*')
             ->join('projects', 'projects.id', '=', 'actions.project_id')
@@ -70,8 +60,7 @@ class ActionController extends Controller
             ->join('users', 'users.id', '=', 'responsibilities.user_id')
             ->where('user_id', $authid)
             ->get();
-        //     dd($actions);
-        // $actions = Action::all();
+
         $monday = $today->startOfWeek()->toDateString();
         $tueasday = $today->addDay(1)->toDateString();
         $wednesday = $today->addDay(1)->toDateString();
@@ -79,7 +68,7 @@ class ActionController extends Controller
         $friday = $today->addDay(1)->toDateString();
         $saturday = $today->addDay(1)->toDateString();
         $sunday = $today->endOfWeek()->toDateString();
-        // dd($monday);
+
         $mondayactions = $actions->where('deadline', '=', $monday);
         $tueasdayactions = $actions->where('deadline', '=', $tueasday);
         $wednesdayactions = $actions->where('deadline', '=', $wednesday);
@@ -87,41 +76,23 @@ class ActionController extends Controller
         $fridayactions = $actions->where('deadline', '=', $friday);
         $saturdayactions = $actions->where('deadline', '=', $saturday);
         $sundayactions = $actions->where('deadline', '=', $sunday);
-        // dd($mondayactions);
-        return view('apppages.actions.weekactions', compact("todayy","actions", "mondayactions", "tueasdayactions", "wednesdayactions", "thursdayactions", "fridayactions", "saturdayactions", "sundayactions"));
+
+        return view('apppages.actions.weekactions', compact("todayy", "actions", "mondayactions", "tueasdayactions", "wednesdayactions", "thursdayactions", "fridayactions", "saturdayactions", "sundayactions"));
     }
 
-    public function createfromproject($id)
-    {
-        $projects = Project::where('id','=', $id)->get();
-        // dd($projects);
-        // dd($id);
-        return view('apppages.actions.createaction', compact("projects"));
-    }
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new resource with a default project.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createfromproject($id)
     {
-        // $authid = Auth::user()->id;
-        // $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
-        $authid = Auth::user()->id;
-        $responsibilities = Responsibility::with("users")->where('user_id', '=', "$authid")->get();
-        // foreach ($responsibilities as $responsibility) {
-        //     $projects =  $responsibility->projects;
+        $projects = Project::where('id', '=', $id)->get();
 
-        // };
-        $projects = Project::select('projects.*')
-            ->join('responsibilities', 'responsibilities.id', '=', 'projects.responsibility_id')
-            ->join('users', 'users.id', '=', 'responsibilities.user_id')
-            ->where('user_id', $authid)
-            ->get();
-
-        return view("apppages.actions.createaction", compact("projects"));
+        return view('apppages.actions.createaction', compact("projects"));
     }
-
+    
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -152,6 +123,9 @@ class ActionController extends Controller
         return redirect()->route('showproject',  $projectid)->with('message', 'ton action a été créée avec succès');
     }
 
+    /**
+     * store a newly created action from the actions view.
+     */
     public function quickstore(Request $request)
     {
 
@@ -160,33 +134,26 @@ class ActionController extends Controller
             'description' => 'required',
             'project' => 'required',
         ]);
-        $todayy = Carbon::today()->toDateString();
+        $today = Carbon::today()->toDateString();
         $status = 1;
-        // $deadline = carbon::parse($request->deadline)->format('Y-m-d');
         $newaction = Action::create([
             'description' => $request->description,
             'definition_of_done' => "to edit later",
             'project_id' => $request->project,
-            'deadline' =>$todayy,
+            'deadline' => $today,
         ]);
 
         $newaction->contexts()->attach($status);
-        // $projectid = $request->project;
+
         return redirect()->route('today')->with('message', 'ton action a été créée avec succès');
     }
 
     public function changeActionStatusToDoing($id)
     {
         $action = Action::find($id);
-        // $actionwithcontext = $action->contexts()->get();
-        // foreach ($actionwithcontext as $context){
-        //    $context->pivot->context_id = 2;
-        // }
         $status = 2;
         $action->contexts()->sync($status);
 
-
-        // $actioncontext = $actionwithcontext->pivot()->context_id;
         return response()->json(['success' => "done"]);
     }
 
@@ -197,17 +164,6 @@ class ActionController extends Controller
         $action->contexts()->sync($status);
 
         return response()->json(['success' => "done"]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -255,8 +211,6 @@ class ActionController extends Controller
         $editaction->project_id = $request->project;
         $editaction->deadline = $request->deadline;
         $editaction->save();
-        // dd($editaction);
-
 
         $editaction->contexts()->sync($status);
         $responsibilities = Responsibility::all();
